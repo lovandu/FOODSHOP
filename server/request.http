@@ -1,0 +1,92 @@
+POST http://localhost:5000/api/auth/register
+Content-Type: application/json
+
+{
+  "username": "jim5",
+  "password": "jim"
+}
+
+###
+
+POST http://localhost:5000/api/auth/login
+Content-Type: application/json
+
+{
+  "username": "lovandu",
+  "password": "123456"
+}
+
+###
+
+POST http://localhost:5000/api/posts
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmRjY2UwNDE2NWQ5MDJjNTQ1OGE5NzEiLCJpYXQiOjE2NTg2NTk5MDN9.Gz0ZJegO5FKsqh6ZTzWa1jVmkqZVkHen6iNV5fwFid8
+
+{
+  "title": "Reactt",
+  "description": "React",
+  "url": "react.com",
+  "status": "TO LEARN"
+}
+
+###
+GET http://localhost:5000/api/posts
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmRjY2UwNDE2NWQ5MDJjNTQ1OGE5NzEiLCJpYXQiOjE2NTg2NTk5MDN9.Gz0ZJegO5FKsqh6ZTzWa1jVmkqZVkHen6iNV5fwFid8
+
+###
+
+PUT http://localhost:5000/api/posts/62dd245fa36c0b1fdceb9843
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmRjY2UwNDE2NWQ5MDJjNTQ1OGE5NzEiLCJpYXQiOjE2NTg2NTk5MDN9.Gz0ZJegO5FKsqh6ZTzWa1jVmkqZVkHen6iNV5fwFid8
+
+{
+  "title": "Vue",
+  "description": "VUEEEEE",
+  "url": "https://vuejs.org",
+  "status": "LEARNING"
+}
+
+###
+
+DELETE http://localhost:5000/api/posts/62dd245fa36c0b1fdceb9843
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmRjY2UwNDE2NWQ5MDJjNTQ1OGE5NzEiLCJpYXQiOjE2NTg2NTk5MDN9.Gz0ZJegO5FKsqh6ZTzWa1jVmkqZVkHen6iNV5fwFid8
+###
+
+POST http://localhost:5000/api/products
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmRkNThmNGM5ZTU3NzNhZGNkNmVmZTYiLCJpYXQiOjE2NTg4MDM1NDB9.IxyTlW4arPiAEJbJrsyvna8SNyZHsGqlDPoLyJOS6HY
+
+{
+  "name": "Thit lon",
+  "image": "link image",
+  "category":"Thuc an",
+  "description": "Thit lon vai",
+  "price": "80000"
+}
+###
+
+GET http://localhost:5000/api/products
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmRkNThmNGM5ZTU3NzNhZGNkNmVmZTYiLCJpYXQiOjE2NTg4MDM1NDB9.IxyTlW4arPiAEJbJrsyvna8SNyZHsGqlDPoLyJOS6HY
+###
+
+GET http://localhost:5000/api/products/allproducts
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmRkNThmNGM5ZTU3NzNhZGNkNmVmZTYiLCJpYXQiOjE2NTg4MDM1NDB9.IxyTlW4arPiAEJbJrsyvna8SNyZHsGqlDPoLyJOS6HY
+###
+
+PUT http://localhost:5000/api/products/62df5bef5f2b5c1fd0d93d3c
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmRkNThmNGM5ZTU3NzNhZGNkNmVmZTYiLCJpYXQiOjE2NTg4MDM1NDB9.IxyTlW4arPiAEJbJrsyvna8SNyZHsGqlDPoLyJOS6HY
+
+{
+  "name": "Ca basa",
+  "image": "link image",
+  "category":"Thuc an",
+  "description": "Ca rot Da Lat",
+  "price": "100000"
+}
+###
+
+DELETE  http://localhost:5000/api/products/62df5bef5f2b5c1fd0d93d3c
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmRkNThmNGM5ZTU3NzNhZGNkNmVmZTYiLCJpYXQiOjE2NTg4MDM1NDB9.IxyTlW4arPiAEJbJrsyvna8SNyZHsGqlDPoLyJOS6HY
