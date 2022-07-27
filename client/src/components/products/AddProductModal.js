@@ -66,7 +66,7 @@ const AddProductModal = () => {
                     <Form.Group>
                         <Form.Control
                             type="text"
-                            placeholder="Image"
+                            placeholder="Image link"
                             name="image"
                             value={image}
                             onChange={onChangeNewProductForm}
@@ -74,12 +74,16 @@ const AddProductModal = () => {
                     </Form.Group>
                     <Form.Group>
                         <Form.Control
-                            type="text"
+                            as='select'
                             placeholder="Category"
                             name="category"
                             value={category}
                             onChange={onChangeNewProductForm}
-                        />
+                        >
+                            <option value='THỨC ĂN'>Thức Ăn</option>
+							<option value='ĐỒ UỐNG'>Đồ uống</option>
+							<option value='ĐỒ KHÔ'>Đồ khô</option>
+                        </Form.Control>
                     </Form.Group>
                     <Form.Group>
                         <Form.Control

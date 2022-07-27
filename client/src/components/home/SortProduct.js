@@ -14,7 +14,7 @@ const SortProduct = () => {
                             Bán chạy
                         </Button>
                         <Button variant="outline-success" className="font-weight-bolder mt-2 ml-4 active">
-                            Success
+                            Liên quan
                         </Button>{' '}
                         <Button variant="outline-success" className="font-weight-bolder mt-2 ml-3 ">
                             Mới nhất

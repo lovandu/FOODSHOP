@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthContext';
 import { useContext } from 'react';
 import userIcon from '../../assets/person-circle.svg';
-import logoutIcon from '../../assets/logout.svg'
+import cartIcon from '../../assets/cart.svg';
 
 function NavbarMain() {
     // Context
@@ -23,7 +23,7 @@ function NavbarMain() {
         <>
             <Navbar expand="lg" bg="primary">
                 <Container fluid className="grid-wide">
-                    <Navbar.Brand className="font-weight-bolder text-white">
+                    <Navbar.Brand className="font-weight-bolder text-white" to="/home" as={Link}>
                         {/* <img
 					src={learnItLogo}
 					alt='learnItLogo'
@@ -34,13 +34,10 @@ function NavbarMain() {
                         FOODSHOP
                     </Navbar.Brand>{' '}
                     <Navbar.Toggle aria-controls="navbarScroll" />
-                    <Navbar.Collapse id="navbarScroll" className='color-white'>
+                    <Navbar.Collapse id="navbarScroll" className="color-white">
                         <Nav className="me-auto my-2 my-lg-0 ml-5" style={{ maxHeight: '100px' }} navbarScroll>
-                            <Nav.Link className="font-weight-bolder text-white" to="/home" as={Link}>
-                                Home
-                            </Nav.Link>{' '}
                             <Nav.Link className="font-weight-bolder text-white" to="/productmanage" as={Link}>
-                                Product manage
+                                Kênh người bán
                             </Nav.Link>
                             {/* <NavDropdown title="Link" id="navbarScrollingDropdown">
                                 <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
@@ -56,7 +53,7 @@ function NavbarMain() {
                             <Form.Control
                                 type="search"
                                 style={{ minWidth: '400px' }}
-                                placeholder="Search"
+                                placeholder="Tìm kiếm"
                                 className="me-2 "
                                 aria-label="Search"
                             />
@@ -66,7 +63,13 @@ function NavbarMain() {
                         </Form>
 
                         <Nav className="text-white ml-5 ">
-                        <img src={userIcon} alt="userImage" width="24" height="32" className="mr-1 mt-1 text-white" />
+                            <img
+                                src={userIcon}
+                                alt="userImage"
+                                width="24"
+                                height="32"
+                                className="mr-1 mt-1 text-white"
+                            />
                             <NavDropdown
                                 title={username}
                                 id="navbarScrollingDropdown"
@@ -79,6 +82,19 @@ function NavbarMain() {
                                 <NavDropdown.Divider />
                                 <NavDropdown.Item onClick={logout}>Đăng xuất</NavDropdown.Item>
                             </NavDropdown>
+                        </Nav>
+                        <Nav>
+                            <div className='header-cart-img'>
+                                <img
+                                    src={cartIcon}
+                                    alt="userImage"
+                                    style={{ color: '#fff !important' }}
+                                    width="32"
+                                    height="32"
+                                    className="ml-5 mt-1 text-white  "
+                                />
+                                <span className="header-cart-notice font-weight-bolder">3</span>
+                            </div>
                         </Nav>
                     </Navbar.Collapse>
                 </Container>

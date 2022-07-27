@@ -90,3 +90,38 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmRkN
 
 DELETE  http://localhost:5000/api/products/62df5bef5f2b5c1fd0d93d3c
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmRkNThmNGM5ZTU3NzNhZGNkNmVmZTYiLCJpYXQiOjE2NTg4MDM1NDB9.IxyTlW4arPiAEJbJrsyvna8SNyZHsGqlDPoLyJOS6HY
+
+###
+
+POST http://localhost:5000/api/carts
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmRkNThmNGM5ZTU3NzNhZGNkNmVmZTYiLCJpYXQiOjE2NTg4MDM1NDB9.IxyTlW4arPiAEJbJrsyvna8SNyZHsGqlDPoLyJOS6HY
+
+{
+  "ProductsList": [{ "_id": "62e146a520c6a232604a9c74",
+      "name": "Thịt Lợn Ba Chỉ",
+      "image": "https://top10tphcm.com/wp-content/uploads/2021/06/nhung-dia-chi-ban-thit-lon-sach-tphcm.jpg",
+      "category": "Thức Ăn",
+      "description": "Thịt lợn tươi ngon",
+      "price": 100000}]
+}
+###
+
+GET http://localhost:5000/api/carts
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmRkNThmNGM5ZTU3NzNhZGNkNmVmZTYiLCJpYXQiOjE2NTg4MDM1NDB9.IxyTlW4arPiAEJbJrsyvna8SNyZHsGqlDPoLyJOS6HY
+
+###
+
+PUT http://localhost:5000/api/carts/62e1601e2a9e0801149a2394
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmRkNThmNGM5ZTU3NzNhZGNkNmVmZTYiLCJpYXQiOjE2NTg4MDM1NDB9.IxyTlW4arPiAEJbJrsyvna8SNyZHsGqlDPoLyJOS6HY
+
+{
+  "ProductsList": [{ "_id": "62e1491b20c6a232604a9ca0",
+      "name": "Fanta Cam 1.5L",
+      "image": "https://minhcaumart.vn/media/com_eshop/products/8935049500445.jpg",
+      "category": "ĐỒ UỐNG",
+      "description": "Nước fanta siêu ngon, giải khát vào mùa hè nóng",
+      "price": 15000}]
+}

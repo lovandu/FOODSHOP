@@ -1,8 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const verifyToken = require('../middleware/auth');
-const { modelName } = require('../models/Product');
-
 const Product = require('../models/Product');
 
 // @route GET api/products

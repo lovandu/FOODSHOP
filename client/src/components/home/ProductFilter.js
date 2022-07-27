@@ -13,7 +13,7 @@ function ProductFilter() {
                     <p className="ml-3 mb-0">Tất Cả</p>
                 </ListGroup.Item>
                 <ListGroup.Item variant="success">
-                    <p className="ml-3 mb-0">Đồ Ăn</p>
+                    <p className="ml-3 mb-0">Thức Ăn</p>
                 </ListGroup.Item>
                 <ListGroup.Item variant="success">
                     <p className="ml-3 mb-0">Đồ Uống</p>
