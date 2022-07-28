@@ -30,9 +30,7 @@ export const productReducer = (state, action) => {
         case DELETE_PRODUCT:
             return {
                 ...state,
-                products: state.products.filter(
-                    (product) => product._id !== payload,
-                ),
+                products: state.products.filter((product) => product._id !== payload),
             };
         case FIND_PRODUCT:
             return {
@@ -40,9 +38,7 @@ export const productReducer = (state, action) => {
                 product: payload,
             };
         case UPDATE_PRODUCT:
-            const newProducts = state.products.map((product) =>
-                product._id === payload._id ? payload : product,
-            );
+            const newProducts = state.products.map((product) => (product._id === payload._id ? payload : product));
 
             return {
                 ...state,

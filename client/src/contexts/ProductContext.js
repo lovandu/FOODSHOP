@@ -25,21 +25,20 @@ const ProductContextProvider = ({ children }) => {
     const [showUpdateProductModal, setShowUpdateProductModal] = useState(false);
 
     // Get all products
-    const getAllProducts= async()=>{
+    const getAllProducts = async () => {
         try {
-            const response = await axios.get(`${apiUrl}/products/allproducts`)
-            if(response.data.success){
+            const response = await axios.get(`${apiUrl}/products/allproducts`);
+            if (response.data.success) {
                 dispatch({
                     type: PRODUCT_LOADED_SUCCESS,
                     payload: response.data.products,
-                })
+                });
             }
         } catch (error) {
             dispatch({ type: PRODUCT_LOADED_FAIL });
-            
         }
-    }
-    // Get all user products 
+    };
+    // Get all user products
     const getProducts = async () => {
         try {
             const response = await axios.get(`${apiUrl}/products`);
@@ -63,19 +62,17 @@ const ProductContextProvider = ({ children }) => {
                 return response.data;
             }
         } catch (error) {
-            return error.response.data
-                ? error.response.data
-                : { success: false, message: 'Server error' };
+            return error.response.data ? error.response.data : { success: false, message: 'Server error' };
         }
     };
 
     // Delete Product
     const deleteProduct = async (productId) => {
         try {
-            const response = await axios.delete(
-                `${apiUrl}/products/${productId}`,
-            );
+            const response = await axios.delete(`${apiUrl}/products/${productId}`);
+            console.log('first', response);
             if (response.data.success) {
+                console.log('Hello');
                 dispatch({ type: DELETE_PRODUCT, payload: productId });
             }
         } catch (error) {
@@ -85,19 +82,14 @@ const ProductContextProvider = ({ children }) => {
 
     // Find product when user updating product
     const findProduct = (productId) => {
-        const product = productState.products.find(
-            (product) => product._id === productId,
-        );
+        const product = productState.products.find((product) => product._id === productId);
         dispatch({ type: FIND_PRODUCT, payload: product });
     };
 
     // Update product
     const updateProduct = async (updateProduct) => {
         try {
-            const response = await axios.put(
-                `${apiUrl}/products/${updateProduct._id}`,
-                updateProduct,
-            );
+            const response = await axios.put(`${apiUrl}/products/${updateProduct._id}`, updateProduct);
             if (response.data.success) {
                 dispatch({
                     type: UPDATE_PRODUCT,
@@ -106,12 +98,9 @@ const ProductContextProvider = ({ children }) => {
                 return response.data;
             }
         } catch (error) {
-            return error.response.data
-                ? error.response.data
-                : { success: false, message: 'Server error' };
+            return error.response.data ? error.response.data : { success: false, message: 'Server error' };
         }
     };
-
 
     // Product context data
     const ProductContextData = {
@@ -128,11 +117,7 @@ const ProductContextProvider = ({ children }) => {
         getAllProducts,
     };
 
-    return (
-        <ProductContext.Provider value={ProductContextData}>
-            {children}
-        </ProductContext.Provider>
-    );
+    return <ProductContext.Provider value={ProductContextData}>{children}</ProductContext.Provider>;
 };
 
 export default ProductContextProvider;

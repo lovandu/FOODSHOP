@@ -18,3 +18,10 @@ export const ADD_PRODUCT = 'ADD_PRODUCT';
 export const DELETE_PRODUCT = 'DELETE_PRODUCT';
 export const UPDATE_PRODUCT = 'UPDATE_PRODUCT';
 export const FIND_PRODUCT = 'FIND_PRODUCT';
+
+export const CART_LOADED_SUCCESS = 'CART_LOADED_SUCCESS';
+export const CART_LOADED_FAIL = 'CART_LOADED_FAIL';
+export const ADD_CART = 'ADD_CART';
+export const DELETE_CART = 'DELETE_CART';
+export const UPDATE_CART = 'UPDATE_CART';
+export const FIND_CART = 'FIND_CART';

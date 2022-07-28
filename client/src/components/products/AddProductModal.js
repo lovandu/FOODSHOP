@@ -2,16 +2,21 @@ import { Modal, Button, Form } from 'react-bootstrap';
 import { useContext, useState } from 'react';
 import { ProductContext } from '../../contexts/ProductContext';
 
+const CATEGORIES = {
+    FOOD: 'food',
+    BEVERAGE: 'beverage',
+    DRY: 'dry',
+};
+
 const AddProductModal = () => {
     // Contexts
-    const { showAddProductModal, setShowAddProductModal, addProduct } =
-        useContext(ProductContext);
+    const { showAddProductModal, setShowAddProductModal, addProduct } = useContext(ProductContext);
 
     // State
     const [newProduct, setNewProduct] = useState({
         name: '',
         image: '',
-        category: '',
+        category: CATEGORIES.FOOD,
         price: '',
         description: '',
     });
@@ -35,7 +40,7 @@ const AddProductModal = () => {
         setNewProduct({
             name: '',
             image: '',
-            category: '',
+            category: 'food',
             price: '',
             description: '',
         });
@@ -74,15 +79,15 @@ const AddProductModal = () => {
                     </Form.Group>
                     <Form.Group>
                         <Form.Control
-                            as='select'
+                            as="select"
                             placeholder="Category"
                             name="category"
                             value={category}
                             onChange={onChangeNewProductForm}
                         >
-                            <option value='THỨC ĂN'>Thức Ăn</option>
-							<option value='ĐỒ UỐNG'>Đồ uống</option>
-							<option value='ĐỒ KHÔ'>Đồ khô</option>
+                            <option value={CATEGORIES.FOOD}>Thức Ăn</option>
+                            <option value={CATEGORIES.BEVERAGE}>Đồ uống</option>
+                            <option value={CATEGORIES.DRY}>Đồ khô</option>
                         </Form.Control>
                     </Form.Group>
                     <Form.Group>

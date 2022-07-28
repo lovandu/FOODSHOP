@@ -58,7 +58,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmRkN
 
 {
   "name": "Thit lon",
-  "image": "link image",
+  "image": "https://cdn.tgdd.vn/2021/01/content/ketcau-800x450.jpg",
   "category":"Thuc an",
   "description": "Thit lon vai",
   "price": "80000"
