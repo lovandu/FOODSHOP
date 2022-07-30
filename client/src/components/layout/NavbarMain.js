@@ -37,7 +37,6 @@ function NavbarMain() {
     const cartEx = cart;
     console.log('cart', cart);
 
-
     const logout = () => logoutUser();
     return (
         <>
@@ -136,8 +135,6 @@ function NavbarMain() {
                                             <Fragment>
                                                 <img src={noCart} alt="" className="header__cart--no-cart-img" />
                                                 <span className="header__cart-list-no-cart-msg">Chưa có sản phẩm</span>
-                                                <Button className="header__cart-view">Xem giỏ hàng</Button>
-
                                             </Fragment>
                                         ) : (
                                             <Fragment>
@@ -175,7 +172,9 @@ function NavbarMain() {
                                                         </li>
                                                     </ul>
                                                 ))}
-                                                <Button className="header__cart-view">Xem giỏ hàng</Button>
+                                                <Link to="/cart">
+                                                    <Button className="header__cart-view">Xem giỏ hàng</Button>
+                                                </Link>
                                             </Fragment>
                                         )}
 

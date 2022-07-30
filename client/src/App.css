@@ -151,6 +151,8 @@ button.post-button.btn:active {
     bottom: 3rem;
     background: transparent;
     border: none;
+
+    
 }
 
 .btn-floating:hover {
@@ -164,6 +166,11 @@ button.post-button.btn:active {
     border: none;
     box-shadow: none;
 }
+.addProduct-button{
+    z-index: 9;
+    text-align: center;
+}
+
 
 /* Add new post tooltip */
 .tooltip {
@@ -530,10 +537,9 @@ button.post-button.btn:active {
     color: #fff;
     margin-bottom: 20px;
 }
-.addProduct-button{
-    background-color: #ed6227;
-}
 .footer-info-content{
     font-size: 18px;
     cursor: pointer;
 }
+
+/* Product Mangage */

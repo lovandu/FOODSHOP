@@ -85,7 +85,7 @@ const AddProductModal = () => {
                             value={category}
                             onChange={onChangeNewProductForm}
                         >
-                            <option value={CATEGORIES.FOOD}>Thức Ăn</option>
+                            <option value={CATEGORIES.FOOD}>Đồ Ăn</option>
                             <option value={CATEGORIES.BEVERAGE}>Đồ uống</option>
                             <option value={CATEGORIES.DRY}>Đồ khô</option>
                         </Form.Control>

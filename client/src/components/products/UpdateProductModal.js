@@ -1,7 +1,11 @@
 import { Modal, Button, Form } from 'react-bootstrap';
 import { useContext, useEffect, useState } from 'react';
 import { ProductContext } from '../../contexts/ProductContext';
-
+const CATEGORIES = {
+    FOOD: 'food',
+    BEVERAGE: 'beverage',
+    DRY: 'dry',
+};
 const UpdateProductModal = () => {
     // Contexts
     const {
@@ -25,7 +29,7 @@ const UpdateProductModal = () => {
         });
 
     const closeDialog = () => {
-        setUpdatedProduct(product)
+        setUpdatedProduct(product);
         setShowUpdateProductModal(false);
     };
 
@@ -34,7 +38,13 @@ const UpdateProductModal = () => {
         await updateProduct(updatedProduct);
         setShowUpdateProductModal(false);
     };
-
+    const convertCategory = (category) => {
+        if (category === 'food') {
+            return 'Đồ ăn';
+        } else if (category === 'beverage') {
+            return 'Đồ uống';
+        } else return 'Đồ khô';
+    };
 
     return (
         <Modal show={showUpdateProductModal} onHide={closeDialog}>
@@ -68,12 +78,16 @@ const UpdateProductModal = () => {
                     </Form.Group>
                     <Form.Group>
                         <Form.Control
-                            type="text"
+                            as="select"
                             placeholder="Category"
                             name="category"
                             value={category}
                             onChange={onChangeUpdateProductForm}
-                        />
+                        >
+                            <option value={CATEGORIES.FOOD}>Đồ Ăn</option>
+                            <option value={CATEGORIES.BEVERAGE}>Đồ uống</option>
+                            <option value={CATEGORIES.DRY}>Đồ khô</option>
+                        </Form.Control>
                     </Form.Group>
                     <Form.Group>
                         <Form.Control

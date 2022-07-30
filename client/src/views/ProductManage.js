@@ -26,6 +26,14 @@ const ProductManage = () => {
     // Start: Get all products
     useEffect(() => getProducts(), []);
 
+    // convert category
+    const convertCategory = (category) => {
+        if (category === 'food') {
+            return 'Đồ ăn';
+        } else if (category === 'beverage') {
+            return 'Đồ uống';
+        } else return 'Đồ khô'
+    };
     let body = null;
 
     if (productLoading) {
@@ -42,10 +50,10 @@ const ProductManage = () => {
                 <Card className="text-center mx-5 mmy-5">
                     <Card.Header as="h1">Hi </Card.Header>
                     <Card.Body>
-                        <Card.Title>Welcome to foodshop</Card.Title>
-                        <Card.Text>Click the button below to add your first product to sale</Card.Text>
+                        <Card.Title>Chào mừng bạn đến với gian hàng</Card.Title>
+                        <Card.Text>Click để thêm mặt hàng đầu tiên của bạn!</Card.Text>
                         <Button variant="primary" onClick={setShowAddProductModal.bind(this, true)}>
-                            Add product!
+                            Thêm mặt hàng!
                         </Button>
                     </Card.Body>
                 </Card>
@@ -58,11 +66,11 @@ const ProductManage = () => {
                     <thead>
                         <tr>
                             <th>STT</th>
-                            <th>Product Name</th>
-                            <th>Category</th>
-                            <th>Price</th>
-                            <th>Description</th>
-                            <th>Setting</th>
+                            <th>Tên sản phẩm</th>
+                            <th>Loại sản phẩm</th>
+                            <th>Giá</th>
+                            <th>Mô tả</th>
+                            <th>Tùy chỉnh</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -70,7 +78,7 @@ const ProductManage = () => {
                             <tr key={product._id}>
                                 <td>{index}</td>
                                 <td>{product.name}</td>
-                                <td>{product.category}</td>
+                                <td>{convertCategory(product.category)}</td>
                                 <td>{product.price}</td>
                                 <td>{product.description}</td>
                                 <td>
@@ -81,9 +89,13 @@ const ProductManage = () => {
                     </tbody>
                 </Table>
                 {/* Open add product Modal */}
-                <OverlayTrigger className='addProduct-button' placement="left" overlay={<Tooltip>Add product to sale</Tooltip>}>
+                <OverlayTrigger
+                    className="addProduct-button"
+                    placement="left"
+                    overlay={<Tooltip>Add product to sale</Tooltip>}
+                >
                     <Button className="btn-floating" onClick={setShowAddProductModal.bind(this, true)}>
-                        <img src={addIcon} alt="add-post" width="60" height="60" />
+                        <img src={addIcon} alt="add-post" width="60" height="60" className="text-center" />
                     </Button>
                 </OverlayTrigger>
             </>
@@ -93,12 +105,12 @@ const ProductManage = () => {
     return (
         <>
             {/* <div className="bg-gray-color full-screen"> */}
-                <h1 className="text-center pt-5"> Your product</h1>
-                <ProgressBar  now={100} className='cart-page-progressbar mb-5 grid-wide' />
+            <h1 className="text-center pt-5"> Mặt hàng của bạng</h1>
+            <ProgressBar now={100} className="cart-page-progressbar mb-5 grid-wide" />
 
-                {body}
-                <AddProductModal />
-                {product !== null && <UpdateProductModal />}
+            {body}
+            <AddProductModal />
+            {product !== null && <UpdateProductModal />}
             {/* </div> */}
         </>
     );
