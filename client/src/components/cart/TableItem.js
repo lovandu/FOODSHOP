@@ -3,29 +3,24 @@ import { Badge, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import ProductInfo from './ProductInfo';
 
-const TableItem = ({product}) => {
-   
-    const mount=3;
-    const convertNumberToMoney=(number)=>{
+const TableItem = ({ product }) => {
+    const mount = 3;
+    const convertNumberToMoney = (number) => {
         const cent = new Intl.NumberFormat('vi-VN', {
             style: 'currency',
             currency: 'VND',
         }).format(number);
-        return cent
-    }
+        return cent;
+    };
 
     return (
-        <tr >
+        <tr>
             <th>
-                <Link to={`/${product._id}`} style={{textDecoration: 'none'}} >
-                <div className="cart-product-info">
-                    <img
-                        src={product.image}
-                        alt={product.name}
-                        className="cart-product-image"
-                    />
-                    <span className="cart-product-name ml-2 mb-5 text-color">{product.name}</span>
-                </div>
+                <Link to={`/${product._id}`} style={{ textDecoration: 'none' }}>
+                    <div className="cart-product-info">
+                        <img src={product.image} alt={product.name} className="cart-product-image" />
+                        <span className="cart-product-name ml-2 mb-5 text-color">{product.name}</span>
+                    </div>
                 </Link>
             </th>
             <th className="cart-product-price">{convertNumberToMoney(product.price)}</th>
@@ -38,7 +33,7 @@ const TableItem = ({product}) => {
                     <Button variant="success">-</Button>
                 </div>
             </th>
-            <th className="cart-product-priceTotal">{convertNumberToMoney(product.price*mount)}</th>
+            <th className="cart-product-priceTotal">{convertNumberToMoney(product.price * mount)}</th>
         </tr>
     );
 };

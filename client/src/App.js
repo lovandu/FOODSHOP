@@ -30,8 +30,6 @@ function App() {
                                     path="/register"
                                     render={(props) => <Auth {...props} authRoute="register" />}
                                 />
-                                <ProtectedRoute exact path="/dashboard" component={Dashboard} />
-                                <ProtectedRoute exact path="/about" component={About} />
                                 <ProtectedRoute exact path="/productmanage" component={ProductManage} />
                                 <ProtectedRoute exact path="/home" component={Home} />
                                 <ProtectedRoute exact path="/cart" component={Cart} />
