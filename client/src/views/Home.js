@@ -3,7 +3,7 @@ import { Col, Row, Spinner } from 'react-bootstrap';
 import ProductFilter from '../components/home/ProductFilter';
 import ProductList from '../components/home/ProductList';
 import SortProduct from '../components/home/SortProduct';
-import { AuthContext } from '../contexts/AuthContext';
+// import { AuthContext } from '../contexts/AuthContext';
 import { ProductContext } from '../contexts/ProductContext';
 
 const Home = () => {

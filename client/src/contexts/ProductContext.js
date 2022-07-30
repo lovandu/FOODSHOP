@@ -38,6 +38,7 @@ const ProductContextProvider = ({ children }) => {
             dispatch({ type: PRODUCT_LOADED_FAIL });
         }
     };
+
     // Get all user products
     const getProducts = async () => {
         try {
@@ -46,6 +47,21 @@ const ProductContextProvider = ({ children }) => {
                 dispatch({
                     type: PRODUCT_LOADED_SUCCESS,
                     payload: response.data.products,
+                });
+            }
+        } catch (error) {
+            dispatch({ type: PRODUCT_LOADED_FAIL });
+        }
+    };
+
+    // Get a products
+    const getAProduct = async (productId) => {
+        try {
+            const response = await axios.get(`${apiUrl}/products/${productId}`);
+            if (response.data.success) {
+                dispatch({
+                    type: FIND_PRODUCT,
+                    payload: response.data.product,
                 });
             }
         } catch (error) {
@@ -115,6 +131,7 @@ const ProductContextProvider = ({ children }) => {
         showUpdateProductModal,
         setShowUpdateProductModal,
         getAllProducts,
+        getAProduct,
     };
 
     return <ProductContext.Provider value={ProductContextData}>{children}</ProductContext.Provider>;

@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const verifyToken = require('../middleware/auth');
 const Cart = require('../models/Cart');
+const Product = require('../models/Product');
 
 // @route GET api/carts
 // @desc Get carts
@@ -16,13 +17,20 @@ router.get('/', verifyToken, async (req, res) => {
 // @desc Create cart
 // @access Private
 router.post('/', verifyToken, async (req, res) => {
-    const { ProductsList } = req.body;
-
+    const { name, image, category, description, price } = req.body;
+    const newProduct = new Product({
+        name,
+        image,
+        category,
+        description,
+        price,
+        user: req.userId,
+    });
     // simple validation
 
     try {
         const newCart = new Cart({
-            ProductsList,
+            product: newProduct,
             user: req.userId,
         });
         await newCart.save();
@@ -44,10 +52,10 @@ router.post('/', verifyToken, async (req, res) => {
 // @desc Update cart
 // @access Private
 router.put('/:id', verifyToken, async (req, res) => {
-    const { ProductsList } = req.body;
+    const { product } = req.body;
     try {
         let updateCart = {
-            ProductsList,
+            product,
         };
         const cartUpdateCondition = { _id: req.params.id, user: req.userId };
         updateCart = await Cart.findByIdAndUpdate(cartUpdateCondition, updateCart, { new: true });
@@ -73,27 +81,25 @@ router.put('/:id', verifyToken, async (req, res) => {
 // @route DELETE api/carts
 // @desc Delete cart
 // @access Private
-// router.delete('/:id', verifyToken, async (req, res) => {
-//     try {
-//         const productDeleteCondition = { _id: req.params.id, user: req.userId };
-//         const deletedProduct = await Product.findOneAndDelete(
-//             productDeleteCondition,
-//         );
+router.delete('/:id', verifyToken, async (req, res) => {
+    try {
+        const cartDeleteCondition = { _id: req.params.id, user: req.userId };
+        const deletedCart = await Cart.findOneAndDelete(cartDeleteCondition);
 
-//         // User not authorised or product not found
-//         if (!deletedProduct)
-//             return res.status(401).json({
-//                 success: false,
-//                 message: 'Post not found or user not authorised',
-//             });
-//         res.json({ succes: true, product: deletedProduct });
-//     } catch (error) {
-//         console.log(error);
-//         res.status(500).json({
-//             success: false,
-//             message: 'Internal server error',
-//         });
-//     }
-// });
+        // User not authorised or product not found
+        if (!deletedCart)
+            return res.status(401).json({
+                success: false,
+                message: 'cart not found or user not authorised',
+            });
+        res.json({ succes: true, product: deletedCart });
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({
+            success: false,
+            message: 'Internal server error',
+        });
+    }
+});
 
 module.exports = router;

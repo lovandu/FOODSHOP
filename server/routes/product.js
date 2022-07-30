@@ -22,6 +22,17 @@ router.get('/allproducts', verifyToken, async (req, res) => {
         res.json({ success: true, products });
     } catch (error) {}
 });
+// @route GET api/products
+// @desc Get a product
+// @access Private
+router.get('/:id', verifyToken, async (req, res) => {
+    try {
+        const productUpdateCondition = { _id: req.params.id };
+
+        const product = await Product.findOne(productUpdateCondition);
+        res.json({ success: true, product: product });
+    } catch (error) {}
+});
 
 // @route POST api/products
 // @desc Create product

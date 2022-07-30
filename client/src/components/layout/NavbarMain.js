@@ -5,9 +5,14 @@ import { Button, Container, Form, Nav, Navbar, NavDropdown } from 'react-bootstr
 // import Button from 'react-bootstrap/Button'
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthContext';
-import { useContext } from 'react';
+import { Fragment, useContext, useEffect } from 'react';
 import userIcon from '../../assets/person-circle.svg';
-import cartIcon from '../../assets/cart.svg';
+import thitImage from '../../assets/thit_heo.jpg';
+import noCart from '../../assets/no-cart.png';
+import { CartContext } from '../../contexts/CartContext';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch, faChevronCircleDown, faCartShopping } from '@fortawesome/free-solid-svg-icons';
 
 function NavbarMain() {
     // Context
@@ -18,10 +23,25 @@ function NavbarMain() {
         logoutUser,
     } = useContext(AuthContext);
 
+    const {
+        addCart,
+        getCarts,
+        cartState: { cart, cartLoading },
+    } = useContext(CartContext);
+
+    useEffect(() => getCarts(), []);
+    let cartMount = cart.length;
+    // if (cartState.length) {
+    //     cartMount = cart.length;
+    // }
+    const cartEx = cart;
+    console.log('cart', cart);
+
+
     const logout = () => logoutUser();
     return (
         <>
-            <Navbar expand="lg" bg="primary">
+            <Navbar expand="lg" bg="primary ">
                 <Container fluid className="grid-wide">
                     <Navbar.Brand className="font-weight-bolder text-white" to="/home" as={Link}>
                         {/* <img
@@ -58,7 +78,7 @@ function NavbarMain() {
                                 aria-label="Search"
                             />
                             <Button variant="danger" className="ml-1">
-                                Search
+                                <FontAwesomeIcon icon={faSearch} />
                             </Button>
                         </Form>
 
@@ -84,16 +104,89 @@ function NavbarMain() {
                             </NavDropdown>
                         </Nav>
                         <Nav>
-                            <div className='header-cart-img'>
-                                <img
+                            {/* <div className="header-cart-img">
+                                <FontAwesomeIcon
+
+                                className="ml-5 mt-1 text-white header-cart-icon "
+                                    icon={faCartShopping}
+                                />
+
+                                {/* <img
                                     src={cartIcon}
                                     alt="userImage"
                                     style={{ color: '#fff !important' }}
                                     width="32"
                                     height="32"
                                     className="ml-5 mt-1 text-white  "
-                                />
-                                <span className="header-cart-notice font-weight-bolder">3</span>
+                                /> *
+                                <span className="header-cart-notice font-weight-bolder">{cartMount || '0'}</span>
+                            </div> */}
+                            {/* <!-- Cart layout --> */}
+                            <div className="header__cart">
+                                <div className="header__cart-wrap">
+                                    <FontAwesomeIcon
+                                        className="header__cart-icon fa-solid fa-cart-shopping"
+                                        icon={faCartShopping}
+                                    />
+                                    <span className="header__cart-notice">{cart.length || '0'}</span>
+                                    {/* <!-- No cart: header__cart--no-cart --> */}
+                                    {/* {cart.length !==0 ? (cart.length) : (cart.length)} */}
+                                    <div className="header__cart-list ">
+                                        {cart.length !== 0 ? (
+                                            <Fragment>
+                                                <img src={noCart} alt="" className="header__cart--no-cart-img" />
+                                                <span className="header__cart-list-no-cart-msg">Chưa có sản phẩm</span>
+                                                <Button className="header__cart-view">Xem giỏ hàng</Button>
+
+                                            </Fragment>
+                                        ) : (
+                                            <Fragment>
+                                                <h4 className="header__cart-heading">Sản phẩm đã thêm</h4>
+                                                {cart.map((product) => (
+                                                    <ul key={product._id} className="header__cart-list-item">
+                                                        {/* <!-- Cart item --> */}
+
+                                                        <li className="header__cart-item">
+                                                            <img
+                                                                src={product.image}
+                                                                alt={product.name}
+                                                                className="header__cart-img"
+                                                            />
+                                                            <div className="header__cart-item-info">
+                                                                <div className="header__cart-item-head">
+                                                                    <h5 className="header__cart-item-name">
+                                                                        {product.name}{' '}
+                                                                    </h5>
+                                                                    <div className="header__cart-item-price-wrap">
+                                                                        <span className="header__cart-item-price">
+                                                                            {product.price}
+                                                                        </span>
+                                                                        <span className="header__cart-item-multiply">
+                                                                            x
+                                                                        </span>
+                                                                        <span className="header__cart-item-qnt">2</span>
+                                                                    </div>
+                                                                </div>
+                                                                <div className="header__cart-item-body">
+                                                                    {/* <span className="header__cart-item-desc">Phân loại: Đen</span> */}
+                                                                    {/* <span className="header__cart-item-remove">Xóa</span> */}
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                ))}
+                                                <Button className="header__cart-view">Xem giỏ hàng</Button>
+                                            </Fragment>
+                                        )}
+
+                                        {/*  <a
+                                            href="https://www.facebook.com"
+                                            className="header__cart-view btn btn--primary"
+                                        > 
+                                            Xem giỏ hàng
+                                        </a> */}
+                                    </div>
+                                </div>
                             </div>
                         </Nav>
                     </Navbar.Collapse>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { ProductContext } from '../contexts/ProductContext';
 import { useContext, useEffect } from 'react';
-import { Spinner, Card, Button, Table, OverlayTrigger, Tooltip } from 'react-bootstrap';
+import { Spinner, Card, Button, Table, OverlayTrigger, Tooltip, ProgressBar } from 'react-bootstrap';
 import ActionButtons from '../components/products/ActionButtons';
 import AddProductModal from '../components/products/AddProductModal';
 import addIcon from '../assets/plus-circle-fill.svg';
@@ -93,7 +93,9 @@ const ProductManage = () => {
     return (
         <>
             {/* <div className="bg-gray-color full-screen"> */}
-                <h1 className="text-center py-5"> Your product</h1>
+                <h1 className="text-center pt-5"> Your product</h1>
+                <ProgressBar  now={100} className='cart-page-progressbar mb-5 grid-wide' />
+
                 {body}
                 <AddProductModal />
                 {product !== null && <UpdateProductModal />}

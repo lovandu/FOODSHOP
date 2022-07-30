@@ -68,6 +68,13 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmRkN
 GET http://localhost:5000/api/products
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmRkNThmNGM5ZTU3NzNhZGNkNmVmZTYiLCJpYXQiOjE2NTg4MDM1NDB9.IxyTlW4arPiAEJbJrsyvna8SNyZHsGqlDPoLyJOS6HY
+
+###
+
+GET http://localhost:5000/api/products/62e208235bf74537d0b4d466
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmRkNThmNGM5ZTU3NzNhZGNkNmVmZTYiLCJpYXQiOjE2NTg4MDM1NDB9.IxyTlW4arPiAEJbJrsyvna8SNyZHsGqlDPoLyJOS6HY
+
 ###
 
 GET http://localhost:5000/api/products/allproducts
@@ -98,14 +105,17 @@ Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmRkNThmNGM5ZTU3NzNhZGNkNmVmZTYiLCJpYXQiOjE2NTg4MDM1NDB9.IxyTlW4arPiAEJbJrsyvna8SNyZHsGqlDPoLyJOS6HY
 
 {
-  "ProductsList": [{ "_id": "62e146a520c6a232604a9c74",
-      "name": "Thịt Lợn Ba Chỉ",
-      "image": "https://top10tphcm.com/wp-content/uploads/2021/06/nhung-dia-chi-ban-thit-lon-sach-tphcm.jpg",
-      "category": "Thức Ăn",
-      "description": "Thịt lợn tươi ngon",
-      "price": 100000}]
+   "product": {
+      "_id": "62e39fe1811ce13adc57fd0b",
+      "name": "Ca basa",
+      "image": "link image",
+      "category": "Thuc an",
+      "description": "Ca rot Da Lat",
+      "price": 100000,
+      "user": "62dd58f4c9e5773adcd6efe6",
+      "createdAt": "2022-07-29T08:52:49.756Z"
+    }
 }
-###
 
 GET http://localhost:5000/api/carts
 Content-Type: application/json
@@ -113,7 +123,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmRkN
 
 ###
 
-PUT http://localhost:5000/api/carts/62e1601e2a9e0801149a2394
+PUT http://localhost:5000/api/carts/62e2a1125438fa0d94e79390
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmRkNThmNGM5ZTU3NzNhZGNkNmVmZTYiLCJpYXQiOjE2NTg4MDM1NDB9.IxyTlW4arPiAEJbJrsyvna8SNyZHsGqlDPoLyJOS6HY
 
@@ -125,3 +135,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmRkN
       "description": "Nước fanta siêu ngon, giải khát vào mùa hè nóng",
       "price": 15000}]
 }
+###
+
+DELETE  http://localhost:5000/api/carts/62e1491b20c6a232604a9ca0
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmRkNThmNGM5ZTU3NzNhZGNkNmVmZTYiLCJpYXQiOjE2NTg4MDM1NDB9.IxyTlW4arPiAEJbJrsyvna8SNyZHsGqlDPoLyJOS6HY
