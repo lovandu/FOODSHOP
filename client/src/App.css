@@ -508,3 +508,32 @@ button.post-button.btn:active {
     margin-top: 20px;
     font-size: 18px;
 }
+.footer{
+    background-color: #78c2ad;
+    height: 300px;
+    /* margin-top: 40px; */
+}
+.footer-info{
+    color: #fff;
+    padding:50px 0 ;
+
+
+}
+.footer-progressbar{
+    margin-top: 100px;
+    height: 3px;
+    color: #ed6227;
+    background-color: #ed6227 ;
+}
+
+.footer-info-heading{
+    color: #fff;
+    margin-bottom: 20px;
+}
+.addProduct-button{
+    background-color: #ed6227;
+}
+.footer-info-content{
+    font-size: 18px;
+    cursor: pointer;
+}

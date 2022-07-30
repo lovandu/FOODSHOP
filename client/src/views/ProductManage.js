@@ -81,7 +81,7 @@ const ProductManage = () => {
                     </tbody>
                 </Table>
                 {/* Open add product Modal */}
-                <OverlayTrigger placement="left" overlay={<Tooltip>Add product to sale</Tooltip>}>
+                <OverlayTrigger className='addProduct-button' placement="left" overlay={<Tooltip>Add product to sale</Tooltip>}>
                     <Button className="btn-floating" onClick={setShowAddProductModal.bind(this, true)}>
                         <img src={addIcon} alt="add-post" width="60" height="60" />
                     </Button>
