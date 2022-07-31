@@ -14,6 +14,7 @@ import CartContextProvider from './contexts/CartContext';
 import Cart from './views/Cart';
 import ProductInfo from './views/ProductDetail';
 import ProductDetail from './views/ProductDetail';
+import PaymentPage from './views/PaymentPage';
 
 function App() {
     return (
@@ -33,9 +34,8 @@ function App() {
                                 <ProtectedRoute exact path="/productmanage" component={ProductManage} />
                                 <ProtectedRoute exact path="/home" component={Home} />
                                 <ProtectedRoute exact path="/cart" component={Cart} />
-                                <ProtectedRoute exact path="/productDetail" component={ProductDetail} />
                                 <ProtectedRoute exact path="/:productId" component={ProductDetail} />
-
+                                <ProtectedRoute exact path="/payment" component={PaymentPage} />
                             </Switch>
                         </Router>
                     </PostContextProvider>

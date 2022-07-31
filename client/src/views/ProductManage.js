@@ -32,7 +32,7 @@ const ProductManage = () => {
             return 'Đồ ăn';
         } else if (category === 'beverage') {
             return 'Đồ uống';
-        } else return 'Đồ khô'
+        } else return 'Đồ khô';
     };
     let body = null;
 
@@ -105,7 +105,7 @@ const ProductManage = () => {
     return (
         <>
             {/* <div className="bg-gray-color full-screen"> */}
-            <h1 className="text-center pt-5"> Mặt hàng của bạng</h1>
+            <h1 className="text-center pt-5"> Mặt hàng của bạn</h1>
             <ProgressBar now={100} className="cart-page-progressbar mb-5 grid-wide" />
 
             {body}

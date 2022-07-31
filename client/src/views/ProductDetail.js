@@ -12,7 +12,7 @@ const ProductDetail = () => {
     const testId = '62e208235bf74537d0b4d466';
 
     // Start: Get all products
-    useEffect(() => getAProduct(productId), [productId]);
+    useEffect(() => getAProduct(productId), []);
     console.log('product from productDetail', product);
     console.log('productId from partam', productId);
     // console.log('user', product.user.username);
@@ -66,9 +66,11 @@ const ProductDetail = () => {
                         </Form>
                     </Col>
                 </Row>
-                    <h2 className="product-detail-info mt-5">Thông tin</h2>
-                    <ProgressBar now={15} className="product-detail-progressbar" />
-                    <p className='product-detail-description'>Thit lon tuoi ngon, nuoi theo tieu chuan, ko dich benh, ngon bo re. kho rat ngon</p>
+                <h2 className="product-detail-info mt-5">Thông tin</h2>
+                <ProgressBar now={15} className="product-detail-progressbar" />
+                <p className="product-detail-description">
+                    Thit lon tuoi ngon, nuoi theo tieu chuan, ko dich benh, ngon bo re. kho rat ngon
+                </p>
             </div>
         </>
     );

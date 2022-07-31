@@ -135,6 +135,9 @@ function NavbarMain() {
                                             <Fragment>
                                                 <img src={noCart} alt="" className="header__cart--no-cart-img" />
                                                 <span className="header__cart-list-no-cart-msg">Chưa có sản phẩm</span>
+                                                <Link to="/cart">
+                                                    <Button className="header__cart-view">Xem giỏ hàng</Button>
+                                                </Link>
                                             </Fragment>
                                         ) : (
                                             <Fragment>
