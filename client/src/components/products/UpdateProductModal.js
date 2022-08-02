@@ -38,13 +38,13 @@ const UpdateProductModal = () => {
         await updateProduct(updatedProduct);
         setShowUpdateProductModal(false);
     };
-    const convertCategory = (category) => {
-        if (category === 'food') {
-            return 'Đồ ăn';
-        } else if (category === 'beverage') {
-            return 'Đồ uống';
-        } else return 'Đồ khô';
-    };
+    // const convertCategory = (category) => {
+    //     if (category === 'food') {
+    //         return 'Đồ ăn';
+    //     } else if (category === 'beverage') {
+    //         return 'Đồ uống';
+    //     } else return 'Đồ khô';
+    // };
 
     return (
         <Modal show={showUpdateProductModal} onHide={closeDialog}>

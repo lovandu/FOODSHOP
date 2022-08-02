@@ -12,7 +12,6 @@ const RegisterForm = () => {
 
     // Local state
     const {
-        addCart,
 
     } = useContext(CartContext);
 
@@ -90,14 +89,14 @@ const RegisterForm = () => {
                     />
                 </Form.Group>
                 <Button variant="success" type="submit">
-                    Register
+                    Đăng ký
                 </Button>
             </Form>
             <p>
-                Already have an account?
+                Bạn đã có tài khoản?
                 <Link to="/login">
                     <Button variant="info" size="sm" className="ml-2">
-                        Login
+                        Đăng nhập
                     </Button>
                 </Link>
             </p>

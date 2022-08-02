@@ -3,13 +3,11 @@ const Schema = mongoose.Schema;
 
 // Create Schema
 const CartSchema = new Schema({
-    product: {
-        type: Schema.Types.ObjectId,
-        ref: 'products',
-    
-    //     type: Array,
-    //     required: true,
-    },
+    cart:{
+        type:Array,
+        default:[]
+    }
+    ,
     user: {
         type: Schema.Types.ObjectId,
         ref: 'users',

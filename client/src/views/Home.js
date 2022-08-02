@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Button, Col, Container, Dropdown, ListGroup, Row, Spinner } from 'react-bootstrap';
 import ProductList from '../components/home/ProductList';
 // import { AuthContext } from '../contexts/AuthContext';
@@ -13,7 +13,7 @@ const Home = () => {
     //     },
     // } = useContext(AuthContext);
     const {
-        productState: { product, products, productLoading },
+        productState: { products, productLoading },
         getAllProducts,
     } = useContext(ProductContext);
 

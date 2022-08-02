@@ -1,7 +1,6 @@
 import React from 'react';
 import { Badge, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import ProductInfo from './ProductInfo';
 
 const TableItem = ({ product }) => {
     const mount = 3;

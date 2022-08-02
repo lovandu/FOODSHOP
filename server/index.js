@@ -4,9 +4,9 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 
 const authRouter = require('./routes/auth');
-const postRouter = require('./routes/post');
 const productRouter = require('./routes/product');
 const cartRouter = require('./routes/cart');
+const orderRouter = require('./routes/order');
 const connectDB = async () => {
     try {
         await mongoose.connect(
@@ -33,9 +33,9 @@ app.use(express.json());
 app.use(cors());
 
 app.use('/api/auth', authRouter);
-app.use('/api/posts', postRouter);
 app.use('/api/products', productRouter);
 app.use('/api/carts', cartRouter);
+app.use('/api/orders', orderRouter);
 
 const PORT = process.env.PORT || 5000;
 

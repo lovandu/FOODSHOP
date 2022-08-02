@@ -139,3 +139,25 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmRkN
 
 DELETE  http://localhost:5000/api/carts/62e1491b20c6a232604a9ca0
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmRkNThmNGM5ZTU3NzNhZGNkNmVmZTYiLCJpYXQiOjE2NTg4MDM1NDB9.IxyTlW4arPiAEJbJrsyvna8SNyZHsGqlDPoLyJOS6HY
+
+# order
+###
+
+GET http://localhost:5000/api/orders
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmRkNThmNGM5ZTU3NzNhZGNkNmVmZTYiLCJpYXQiOjE2NTk0MzYyNDR9.-rKV-fAAz7hTjH1iard7SB9pnDhnPOQ8awiVZCzkVfw
+
+###
+
+POST http://localhost:5000/api/orders
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmRkNThmNGM5ZTU3NzNhZGNkNmVmZTYiLCJpYXQiOjE2NTk0MzYyNDR9.-rKV-fAAz7hTjH1iard7SB9pnDhnPOQ8awiVZCzkVfw
+
+{
+  "userName": "Thit lon",
+  "userAddress": "https://cdn.tgdd.vn/2021/01/content/ketcau-800x450.jpg",
+  "userPhone":"Thuc an",
+  "paymentMethod": "Thit lon vai",
+  "productsList": [{"productName":"rau co"}, {"productAD":"hoaoa"}],
+  "status": true
+}

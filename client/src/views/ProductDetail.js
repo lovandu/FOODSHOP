@@ -9,7 +9,6 @@ const ProductDetail = () => {
         getAProduct,
     } = useContext(ProductContext);
     const { productId } = useParams();
-    const testId = '62e208235bf74537d0b4d466';
 
     // Start: Get all products
     useEffect(() => getAProduct(productId), []);
@@ -17,13 +16,13 @@ const ProductDetail = () => {
     console.log('productId from partam', productId);
     // console.log('user', product.user.username);
 
-    const convertNumberToMoney = (number) => {
-        const cent = new Intl.NumberFormat('vi-VN', {
-            style: 'currency',
-            currency: 'VND',
-        }).format(number);
-        return cent;
-    };
+    // const convertNumberToMoney = (number) => {
+    //     const cent = new Intl.NumberFormat('vi-VN', {
+    //         style: 'currency',
+    //         currency: 'VND',
+    //     }).format(number);
+    //     return cent;
+    // };
     return (
         <>
             <div className="grid-wide product-detail-layout my-5">

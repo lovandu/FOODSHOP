@@ -7,12 +7,11 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthContext';
 import { Fragment, useContext, useEffect } from 'react';
 import userIcon from '../../assets/person-circle.svg';
-import thitImage from '../../assets/thit_heo.jpg';
 import noCart from '../../assets/no-cart.png';
 import { CartContext } from '../../contexts/CartContext';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch, faChevronCircleDown, faCartShopping } from '@fortawesome/free-solid-svg-icons';
+import { faSearch, faCartShopping } from '@fortawesome/free-solid-svg-icons';
 
 function NavbarMain() {
     // Context
@@ -24,17 +23,16 @@ function NavbarMain() {
     } = useContext(AuthContext);
 
     const {
-        addCart,
         getCarts,
-        cartState: { cart, cartLoading },
+        cartState: { cart },
     } = useContext(CartContext);
 
     useEffect(() => getCarts(), []);
-    let cartMount = cart.length;
+    // let cartMount = cart.length;
     // if (cartState.length) {
     //     cartMount = cart.length;
     // }
-    const cartEx = cart;
+    // const cartEx = cart;
     console.log('cart', cart);
 
     const logout = () => logoutUser();

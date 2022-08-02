@@ -151,8 +151,6 @@ button.post-button.btn:active {
     bottom: 3rem;
     background: transparent;
     border: none;
-
-    
 }
 
 .btn-floating:hover {
@@ -166,11 +164,10 @@ button.post-button.btn:active {
     border: none;
     box-shadow: none;
 }
-.addProduct-button{
+.addProduct-button {
     z-index: 9;
     text-align: center;
 }
-
 
 /* Add new post tooltip */
 .tooltip {
@@ -497,53 +494,102 @@ button.post-button.btn:active {
     height: 36px;
 }
 
-.product-detail-buy-button{
+.product-detail-buy-button {
     font-weight: 600;
     min-width: 164px;
 }
 
-.product-detail-addCart-button{
+.product-detail-addCart-button {
     font-weight: 600;
 }
-.product-detail-progressbar{
+.product-detail-progressbar {
     height: 3px;
     color: #279069;
     background-color: #c4c4c4;
 }
-.product-detail-description{
+.product-detail-description {
     color: #333;
     margin-top: 20px;
     font-size: 18px;
 }
-.footer{
+.footer {
     background-color: #78c2ad;
     height: 300px;
     /* margin-top: 40px; */
 }
-.footer-info{
+.footer-info {
     color: #fff;
     /* padding:50px 0 ; */
     padding-top: 50px;
-
-
 }
-.footer-progressbar{
+.footer-progressbar {
     margin-top: 100px;
     height: 3px;
     color: #ed6227;
-    background-color: #ed6227 ;
+    background-color: #ed6227;
 }
 
-.footer-info-heading{
+.footer-info-heading {
     color: #fff;
     margin-bottom: 20px;
 }
-.footer-info-content{
+.footer-info-content {
     font-size: 15px;
     cursor: pointer;
 }
-.footer-info-content-item:hover{
+.footer-info-content-item:hover {
     color: #ed6227;
 }
 
 /* Product Mangage */
+
+/* Payment page */
+
+.payment-title {
+    padding: 5px 10px;
+    font-size: 18px;
+    text-transform: uppercase;
+    font-weight: bold;
+    background-color: #78c2ad;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    border-radius: 8px;
+}
+.payment-title span{
+    border: 2px solid #fff;
+        border-radius: 50%;
+        width: 24px;
+        height: 24px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 16px;
+        margin-right: 8px;
+}
+.payment-table-heading{
+    color:#0a6249;
+}
+.payment-table-total{
+    color:#0a6249;
+    
+}
+.payment-table-product-price{
+    color:#0a6249;
+
+}
+.payment-table-product-name{
+    color: #333;
+}
+.payment-input-lable{
+    color: #333;
+    font-size: 18px;
+}
+.payment-table-product-quantity,
+.payment-method{
+    color: #333;
+}
+
+.payment-method-radio{
+    margin-bottom: 5px;
+}

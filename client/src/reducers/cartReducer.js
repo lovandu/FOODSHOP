@@ -1,6 +1,5 @@
 import { CART_LOADED_SUCCESS, ADD_CART, CART_LOADED_FAIL, UPDATE_CART, DELETE_CART } from '../contexts/constants';
 
-import React from 'react';
 
 export const cartReducer = (state, action) => {
     const { type, payload } = action;
