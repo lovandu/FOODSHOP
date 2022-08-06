@@ -27,12 +27,12 @@ const TableItem = ({ product }) => {
                 <div className="cart-input-product-mount">
                     <Button variant="success">+</Button>
                     <Badge bg="primary" className="table-item-mount-product ">
-                        3
+                        {product.quantity}
                     </Badge>
                     <Button variant="success">-</Button>
                 </div>
             </th>
-            <th className="cart-product-priceTotal">{convertNumberToMoney(product.price * mount)}</th>
+            <th className="cart-product-priceTotal">{convertNumberToMoney(product.price * product.quantity)}</th>
         </tr>
     );
 };

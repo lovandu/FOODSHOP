@@ -12,8 +12,8 @@ POST http://localhost:5000/api/auth/login
 Content-Type: application/json
 
 {
-  "username": "lovandu",
-  "password": "123456"
+  "username": "jim5",
+  "password": "jim"
 }
 
 ###
@@ -82,7 +82,7 @@ Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmRkNThmNGM5ZTU3NzNhZGNkNmVmZTYiLCJpYXQiOjE2NTg4MDM1NDB9.IxyTlW4arPiAEJbJrsyvna8SNyZHsGqlDPoLyJOS6HY
 ###
 
-PUT http://localhost:5000/api/products/62df5bef5f2b5c1fd0d93d3c
+PUT http://localhost:5000/api/products/62e4f41b14826c302428b7f3
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmRkNThmNGM5ZTU3NzNhZGNkNmVmZTYiLCJpYXQiOjE2NTg4MDM1NDB9.IxyTlW4arPiAEJbJrsyvna8SNyZHsGqlDPoLyJOS6HY
 
@@ -116,6 +116,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmRkN
       "createdAt": "2022-07-29T08:52:49.756Z"
     }
 }
+###
 
 GET http://localhost:5000/api/carts
 Content-Type: application/json
@@ -154,10 +155,46 @@ Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmRkNThmNGM5ZTU3NzNhZGNkNmVmZTYiLCJpYXQiOjE2NTk0MzYyNDR9.-rKV-fAAz7hTjH1iard7SB9pnDhnPOQ8awiVZCzkVfw
 
 {
-  "userName": "Thit lon",
-  "userAddress": "https://cdn.tgdd.vn/2021/01/content/ketcau-800x450.jpg",
-  "userPhone":"Thuc an",
-  "paymentMethod": "Thit lon vai",
-  "productsList": [{"productName":"rau co"}, {"productAD":"hoaoa"}],
-  "status": true
+  "userName":"LO DU VAN",
+  "userAddress":"SON LA",
+  "userPhone":"01234567",
+  "paymentMethod":"COD",
+  "productsList":[{
+  "name":"Thit Cuu"
+  }],
+  "status":true
+}
+###
+
+GET http://localhost:5000/api/products/allproducts
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmRkNThmNGM5ZTU3NzNhZGNkNmVmZTYiLCJpYXQiOjE2NTg4MDM1NDB9.IxyTlW4arPiAEJbJrsyvna8SNyZHsGqlDPoLyJOS6HY
+
+
+###
+GET http://localhost:5000/api/carts
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmRkNThmNGM5ZTU3NzNhZGNkNmVmZTYiLCJpYXQiOjE2NTk0MzYyNDR9.-rKV-fAAz7hTjH1iard7SB9pnDhnPOQ8awiVZCzkVfw
+
+###
+
+POST http://localhost:5000/api/carts/62e2a5355438fa0d94e79398
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmRkNThmNGM5ZTU3NzNhZGNkNmVmZTYiLCJpYXQiOjE2NTk0MzYyNDR9.-rKV-fAAz7hTjH1iard7SB9pnDhnPOQ8awiVZCzkVfw
+
+{
+  "quantity":0
+}
+###
+GET http://localhost:5000/api/carts/reset
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmRkNThmNGM5ZTU3NzNhZGNkNmVmZTYiLCJpYXQiOjE2NTk0MzYyNDR9.-rKV-fAAz7hTjH1iard7SB9pnDhnPOQ8awiVZCzkVfw
+###
+
+POST http://localhost:5000/api/carts/62e2a5355438fa0d94e79398
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmRjZDA0YTFhOThkMzE2ZDQzOGIzMzQiLCJpYXQiOjE2NTk3NzYxMDh9.ck0MbNBSdOdfk6lA9NvL13UMVbdCA4U7FHUAsfePflE
+
+{
+  "quantity":1
 }

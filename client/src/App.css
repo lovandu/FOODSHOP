@@ -79,7 +79,7 @@
 /* Login */
 .landing {
     position: relative;
-    background: url('./assets/landing.jpg') no-repeat center center/cover;
+    background: url('./assets/thai-food.jpg') no-repeat center center/cover;
     height: 100vh;
 }
 
@@ -556,40 +556,187 @@ button.post-button.btn:active {
     align-items: center;
     border-radius: 8px;
 }
-.payment-title span{
+.payment-title span {
     border: 2px solid #fff;
-        border-radius: 50%;
-        width: 24px;
-        height: 24px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 16px;
-        margin-right: 8px;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    margin-right: 8px;
 }
-.payment-table-heading{
-    color:#0a6249;
+.payment-table-heading {
+    color: #0a6249;
 }
-.payment-table-total{
-    color:#0a6249;
-    
+.payment-table-total {
+    color: #0a6249;
 }
-.payment-table-product-price{
-    color:#0a6249;
-
+.payment-table-product-price {
+    color: #0a6249;
 }
-.payment-table-product-name{
+.payment-table-product-name {
     color: #333;
 }
-.payment-input-lable{
+.payment-input-lable {
     color: #333;
     font-size: 18px;
 }
 .payment-table-product-quantity,
-.payment-method{
+.payment-method {
     color: #333;
 }
 
-.payment-method-radio{
+.payment-method-radio {
     margin-bottom: 5px;
+}
+
+/* sideBarUser */
+.sideBarUser {
+    width: 200px;
+    height: 100%;
+    margin-right: 20px;
+}
+.sideBarUser__info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+}
+.sideBarUser__info span {
+    font-weight: 700;
+    width: 120px;
+    color: #333;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.sideBarUser__image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 15px;
+    object-fit: cover;
+}
+
+.sideBarUser__list {
+    margin: 0;
+    padding: 0;
+}
+.sideBarUser__item {
+    list-style: none;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.2s linear;
+}
+.sideBarUser__item a {
+    color: #555;
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    transition: all 0.2s linear;
+}
+.sideBarUser__item a:hover {
+    text-decoration: none;
+    color: #78c2ad;
+}
+.sideBarUser__item-icon {
+    margin-right: 10px;
+    height: 18px;
+    width: 18px !important;
+}
+
+/* Purchase tabs */
+.purchase__tabs {
+    background-color: #f7f7f7;
+}
+.purchase__tabs-item {
+}
+/* .nav-tabs .nav-link.disabled{
+    color: #333;
+} */
+.nav-tabs .nav-link.active {
+    background-color: #78c2ad;
+    color: #333;
+}
+.purchase__tabs a {
+}
+
+.purchase__main-item {
+    margin-bottom: 10px;
+    background-color: #f0f5f7;
+    border-radius: 8px;
+    box-shadow: 0px 5px 10px 2px rgba(#c4c4c4, 0.6);
+}
+.purchase__main-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+    border-bottom: 1px solid #c4c4c4;
+    color: #333;
+}
+.purchase__main-item-header-left {
+    display: flex;
+    align-items: center;
+}
+.purchase__main-item-header-right{
+    color: #ed6227;
+}
+.purchase__main-item-header-icon {
+    margin-right: 10px;
+    width: 20px !important;
+    height: 20px;
+}
+.purchase__main-item-productsList {
+    padding: 0 20px;
+}
+.purchase__main-item-product {
+    display: flex;
+    align-items: center;
+    padding: 15px 0;
+}
+.purchase__main-item-product:hover {
+    text-decoration: none;
+}
+.purchase__main-item-product-info {
+    flex: 1;
+    color: #555;
+    font-weight: 700;
+    line-height: 3rem;
+}
+.purchase__main-item-product-price {
+    font-size: 18px;
+    font-weight: 700;
+    color: #0a6249;
+}
+.purchase__main-item-product-img {
+    width: 100px;
+    height: 100px;
+    border-radius: 8px;
+    margin-right: 15px;
+}
+.purchase__main-item-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #c4c4c4;
+    padding: 20px;
+}
+.purchase__main-item-again {
+    padding: 8px 40px;
+}
+.purchase__main-item-total {
+    display: flex;
+    align-items: center;
+
+}
+.purchase__main-item-total-text {
+    margin-right: 10px;
+    font-size: 16px;
+    color: #333;
+}
+.purchase__main-item-total-price {
+    font-size: 26px;
+    color: #0a6249;
+    font-weight: 700;
 }

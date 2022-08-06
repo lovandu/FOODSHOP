@@ -17,6 +17,10 @@ const Home = () => {
         getAllProducts,
     } = useContext(ProductContext);
 
+
+
+    // const{}
+
     useEffect(() => getAllProducts(), []);
     let body = null;
     // const [newProducts, setNewProducts] = useState(products);

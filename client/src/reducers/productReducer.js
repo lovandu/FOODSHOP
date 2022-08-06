@@ -10,6 +10,11 @@ import {
 export const productReducer = (state, action) => {
     const { type, payload } = action;
     switch (type) {
+        case FIND_PRODUCT:
+            return {
+                ...state,
+                product: payload,
+            };
         case PRODUCT_LOADED_SUCCESS:
             return {
                 ...state,
@@ -30,15 +35,15 @@ export const productReducer = (state, action) => {
         case DELETE_PRODUCT:
             return {
                 ...state,
-                products: state.products.filter((product) => product._id !== payload),
+                products: state.products.filter(
+                    (product) => product._id !== payload,
+                ),
             };
-        case FIND_PRODUCT:
-            return {
-                ...state,
-                product: payload,
-            };
+
         case UPDATE_PRODUCT:
-            const newProducts = state.products.map((product) => (product._id === payload._id ? payload : product));
+            const newProducts = state.products.map((product) =>
+                product._id === payload._id ? payload : product,
+            );
 
             return {
                 ...state,

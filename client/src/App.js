@@ -11,30 +11,67 @@ import CartContextProvider from './contexts/CartContext';
 import Cart from './views/Cart';
 import ProductDetail from './views/ProductDetail';
 import Payment from './views/Payment';
+import OrderContextProvider from './contexts/OrderContext';
+import Purchase from './views/Purchase';
 
 function App() {
     return (
         <AuthContextProvider>
             <ProductContextProvider>
-                <CartContextProvider>
-                    <Router>
-                        <Switch>
-                            <Route exact path="/" component={Landing} />
-                            <Route exact path="/login" render={(props) => <Auth {...props} authRoute="login" />} />
-                            <Route
-                                exact
-                                path="/register"
-                                render={(props) => <Auth {...props} authRoute="register" />}
-                            />
-                            <ProtectedRoute exact path="/productmanage" component={ProductManage} />
-                            <ProtectedRoute exact path="/home" component={Home} />
-                            <ProtectedRoute exact path="/cart" component={Cart} />
-                            <ProtectedRoute exact path="/payment" component={Payment} />
+                <OrderContextProvider>
+                    <CartContextProvider>
+                        <Router>
+                            <Switch>
+                                <Route exact path="/" component={Landing} />
+                                <Route
+                                    exact
+                                    path="/login"
+                                    render={(props) => (
+                                        <Auth {...props} authRoute="login" />
+                                    )}
+                                />
+                                <Route
+                                    exact
+                                    path="/register"
+                                    render={(props) => (
+                                        <Auth {...props} authRoute="register" />
+                                    )}
+                                />
+                                <ProtectedRoute
+                                    exact
+                                    path="/productmanage"
+                                    component={ProductManage}
+                                />
+                                <ProtectedRoute
+                                    exact
+                                    path="/home"
+                                    component={Home}
+                                />
+                                <ProtectedRoute
+                                    exact
+                                    path="/cart"
+                                    component={Cart}
+                                />
+                                <ProtectedRoute
+                                    exact
+                                    path="/payment"
+                                    component={Payment}
+                                />
 
-                            <ProtectedRoute exact path="/:productId" component={ProductDetail} />
-                        </Switch>
-                    </Router>
-                </CartContextProvider>
+                                <ProtectedRoute
+                                    exact
+                                    path="/purchase"
+                                    component={Purchase}
+                                />
+                                <ProtectedRoute
+                                    exact
+                                    path="/:productId"
+                                    component={ProductDetail}
+                                />
+                            </Switch>
+                        </Router>
+                    </CartContextProvider>
+                </OrderContextProvider>
             </ProductContextProvider>
         </AuthContextProvider>
     );

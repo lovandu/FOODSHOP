@@ -20,6 +20,22 @@ const ProductContextProvider = ({ children }) => {
         products: [],
         productLoading: true,
     });
+    
+    // Get a products
+    const getAProduct = async (productId) => {
+        try {
+            const response = await axios.get(`${apiUrl}/products/${productId}`);
+            if (response.data.success) {
+                dispatch({
+                    type: FIND_PRODUCT,
+                    payload: response.data.product,
+                });
+            }
+        } catch (error) {
+            dispatch({ type: PRODUCT_LOADED_FAIL });
+        }
+    };
+
 
     const [showAddProductModal, setShowAddProductModal] = useState(false);
     const [showUpdateProductModal, setShowUpdateProductModal] = useState(false);
@@ -47,21 +63,6 @@ const ProductContextProvider = ({ children }) => {
                 dispatch({
                     type: PRODUCT_LOADED_SUCCESS,
                     payload: response.data.products,
-                });
-            }
-        } catch (error) {
-            dispatch({ type: PRODUCT_LOADED_FAIL });
-        }
-    };
-
-    // Get a products
-    const getAProduct = async (productId) => {
-        try {
-            const response = await axios.get(`${apiUrl}/products/${productId}`);
-            if (response.data.success) {
-                dispatch({
-                    type: FIND_PRODUCT,
-                    payload: response.data.product,
                 });
             }
         } catch (error) {
