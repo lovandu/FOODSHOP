@@ -1,7 +1,7 @@
 export const apiUrl =
     process.env.NODE_ENV !== 'production'
         ? 'http://localhost:5000/api'
-        : 'https://foodshop-mern-web.herokuapp.com//api';
+        : 'https://radiant-harbor-68164.herokuapp.com/api';
 
 export const LOCAL_STORAGE_TOKEN_NAME = 'learnit-mern';
 
