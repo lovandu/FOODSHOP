@@ -5,6 +5,7 @@ import {
     DELETE_PRODUCT,
     UPDATE_PRODUCT,
     FIND_PRODUCT,
+    FILTER_PRODUCT,
 } from '../contexts/constants';
 
 export const productReducer = (state, action) => {
@@ -37,6 +38,13 @@ export const productReducer = (state, action) => {
                 ...state,
                 products: state.products.filter(
                     (product) => product._id !== payload,
+                ),
+            };
+        case FILTER_PRODUCT:
+            return {
+                ...state,
+                products: state.products.filter(
+                    (product) => product.category !== payload,
                 ),
             };
 

@@ -1,5 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import {
+    Breadcrumb,
+    BreadcrumbItem,
     Button,
     Col,
     Form,
@@ -29,6 +31,7 @@ const Payment = ({ product, quantity }) => {
     // console.log('quantity', quantity);
     const {
         getCarts,
+        resetCart,
         cartState: { cart, cartLoading },
     } = useContext(CartContext);
     // if()
@@ -78,10 +81,11 @@ const Payment = ({ product, quantity }) => {
 
     const onSubmit = async (event) => {
         event.preventDefault();
-        console.log('productsList', productsList);
-
         await addOrders(newOrder);
+        console.log('bf resetCart');
+        await resetCart();
     };
+
     let body = null;
     if (cartLoading) {
         body = (
@@ -94,11 +98,19 @@ const Payment = ({ product, quantity }) => {
     } else {
         body = (
             <>
-                <h1 className="text-center pt-5"> Thanh toán</h1>
-                <ProgressBar
-                    now={100}
-                    className="cart-page-progressbar mb-5 grid-wide"
-                />
+                <Breadcrumb className="grid-wide my-4">
+                        <BreadcrumbItem>
+                            <Link to="/home">Trang chủ</Link>
+                        </BreadcrumbItem>
+                        <BreadcrumbItem>
+                            <Link to="/cart">
+                                Giỏ hàng
+                            </Link>
+                        </BreadcrumbItem>
+                        <BreadcrumbItem active>
+                            Thanh toán
+                        </BreadcrumbItem>
+                    </Breadcrumb>
                 <Row className="payment-layout grid-wide">
                     <Col md="5" className="payment-left">
                         <div className="payment-title">
@@ -214,8 +226,7 @@ const Payment = ({ product, quantity }) => {
                                     id="paymentid"
                                 ></Form.Check>
                             </Form.Group>
-                            {/* <Link to="/purchase" */}
-                            {/* > */}
+
                             <Button
                                 type="submit"
                                 variant="success"
@@ -223,7 +234,6 @@ const Payment = ({ product, quantity }) => {
                             >
                                 ĐẶT HÀNG
                             </Button>
-                            {/* </Link> */}
                         </Form>
                     </Col>
                 </Row>

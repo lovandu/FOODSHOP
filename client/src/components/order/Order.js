@@ -66,6 +66,7 @@ const Order = ({ order }) => {
                     <Button
                         variant="success"
                         className="purchase__main-item-again font-weight-bolder"
+                        disabled
                     >
                         MUA LẦN NỮA
                     </Button>

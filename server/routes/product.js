@@ -14,6 +14,18 @@ router.get('/', verifyToken, async (req, res) => {
 });
 
 // @route GET api/products
+// @desc Find product by name
+// @access Private
+// router.get('/', verifyToken, async (req, res) => {
+    
+//     try {
+//         const products = await Product.find({ user: req.userId }).populate('user', ['username']);
+//         res.json({ success: true, products });
+//     } catch (error) {}
+// });
+
+
+// @route GET api/products
 // @desc Get all products
 // @access Private
 router.get('/allproducts', verifyToken, async (req, res) => {
@@ -22,6 +34,17 @@ router.get('/allproducts', verifyToken, async (req, res) => {
         res.json({ success: true, products });
     } catch (error) {}
 });
+
+// @route GET api/products
+// @desc Get all products
+// @access Private
+// router.get('/:category', verifyToken, async (req, res) => {
+//     try {
+//         const products = await Product.find({category:req.params.category});
+//         res.json({ success: true, products });
+//     } catch (error) {}
+// });
+
 // @route GET api/products
 // @desc Get a product
 // @access Private

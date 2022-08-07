@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useContext, useEffect } from 'react';
-import { Button, ProgressBar, Spinner, Table } from 'react-bootstrap';
+import { Breadcrumb, BreadcrumbItem, Button, ProgressBar, Spinner, Table } from 'react-bootstrap';
 import { CartContext } from '../contexts/CartContext';
 import { faFaceFrown } from '@fortawesome/free-solid-svg-icons';
 import { ProductContext } from '../contexts/ProductContext';
@@ -82,20 +82,23 @@ const Cart = () => {
 
                 <div className="cart-total-layout text-center my-5">
                     <p className="cart-total-price">
-                        <span className='mr-2'>Tổng cộng:</span>
-                        {convertNumberToMoney(cart.cart.reduce(
-                            (total, value) =>
-                                total + parseInt(value.price * value.quantity),
-                            0,
-                        ))}
+                        <span className="mr-2">Tổng cộng:</span>
+                        {convertNumberToMoney(
+                            cart.cart.reduce(
+                                (total, value) =>
+                                    total +
+                                    parseInt(value.price * value.quantity),
+                                0,
+                            ),
+                        )}
                     </p>
-                    <Link to='/home'>
-
-                    <Button variant="success mx-5">TIẾP TỤC MUA HÀNG</Button>
+                    <Link to="/home">
+                        <Button variant="success mx-5">
+                            TIẾP TỤC MUA HÀNG
+                        </Button>
                     </Link>
-                    <Link to='/payment'>
-
-                    <Button variant="success">TIẾN HÀNH THANH TOÁN</Button>
+                    <Link to="/payment">
+                        <Button variant="success">TIẾN HÀNH THANH TOÁN</Button>
                     </Link>
                 </div>
             </>
@@ -104,9 +107,14 @@ const Cart = () => {
     return (
         <>
             <div className="grid-wide">
-                <h1 className="text-center pt-5"> Giỏ hàng</h1>
-                <ProgressBar now={100} className="cart-page-progressbar mb-5" />
-
+                <Breadcrumb className="my-4">
+                    <BreadcrumbItem>
+                        <Link to="/home">Trang chủ</Link>
+                    </BreadcrumbItem>
+                    <BreadcrumbItem active>
+                        Giỏ hàng
+                    </BreadcrumbItem>
+                </Breadcrumb>
                 {body}
             </div>
         </>

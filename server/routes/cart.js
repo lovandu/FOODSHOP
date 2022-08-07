@@ -27,9 +27,9 @@ router.post('/:productId', verifyToken, async (req, res) => {
             'user',
             ['username'],
         );
-        // const item=null
-        const item = null;
-        if (carts!==null && carts.length > 0) {
+        let item = null;
+
+        if (carts !== null && carts.length >= 0) {
             item = carts.cart.find((x) => {
                 return x.productId === productId;
             });
@@ -38,7 +38,7 @@ router.post('/:productId', verifyToken, async (req, res) => {
 
         const product = await Product.findOne(productUpdateCondition);
         const currentProduct = await Product.findById(productId);
-        if (carts===null) {
+        if (carts === null) {
             const newCart = new Cart({
                 cart: {
                     productId: product._id,
@@ -55,26 +55,6 @@ router.post('/:productId', verifyToken, async (req, res) => {
                 message: 'Create a new cart successful!',
                 cart: newCart,
             });
-        } else if (item && quantity === 0) {
-            const updateCart = await Cart.findOneAndUpdate(
-                {
-                    _id: carts._id,
-                    'cart.productId': productId,
-                },
-                {
-                    $pull: {
-                        cart: {
-                            productId: productId,
-                        },
-                    },
-                },
-                { new: true },
-            );
-            await res.json({
-                success: true,
-                message: 'set a new cart successful!',
-                cart: updateCart,
-            });
         } else if (item) {
             const updateCart = await Cart.findOneAndUpdate(
                 {
@@ -86,6 +66,26 @@ router.post('/:productId', verifyToken, async (req, res) => {
                         'cart.$': {
                             ...item,
                             quantity: item.quantity + quantity,
+                        },
+                    },
+                },
+                { new: true },
+            );
+            await res.json({
+                success: true,
+                message: 'set a new cart successful!',
+                cart: updateCart,
+            });
+        } else if (item && quantity === 0) {
+            const updateCart = await Cart.findOneAndUpdate(
+                {
+                    _id: carts._id,
+                    'cart.productId': productId,
+                },
+                {
+                    $pull: {
+                        cart: {
+                            productId: productId,
                         },
                     },
                 },
@@ -120,109 +120,9 @@ router.post('/:productId', verifyToken, async (req, res) => {
                 cart: updateCart,
             });
         }
-
-        // const item = carts.find((x) => {
-        //     return x.productId === productId;
-        // });
-
-        // const currentProduct = await Product.findById(productId);
-        // if (item && quantity === 0) {
-        //     const updateCart = await carts.findOneAndUpdate(
-        //         { _id: item._id, 'cart.productId': productId },
-        //         {
-        //             $pull: {
-        //                 cart: {
-        //                     productId: productId,
-        //                 },
-        //             },
-        //         },
-        //         { new: true },
-        //     );
-        //     await res.json({
-        //         success: true,
-        //         message: 'update cart successful!',
-        //         cart: updateCart,
-        //     });
-        // } else if (item) {
-        //     const updateCart = await Cart.findOneAndUpdate(
-        //         {
-        //             _id: item._id,
-        //             'cart.productId': productId,
-        //         },
-        //         {
-        //             $set: {
-        //                 'cart.$': {
-        //                     ...item,
-        //                     quantity: item.quantity + quantity,
-        //                 },
-        //             },
-        //         },
-        //         { new: true },
-        //     );
-        //     await res.json({
-        //         success: true,
-        //         message: 'add product to cart successful!',
-        //         cart: updateCart,
-        //     });
-        // } else {
-        //     const updateCart = await Cart.findOneAndUpdate(
-        //         { _id: item._id },
-        //         {
-        //             $push: {
-        //                 cart: {
-        //                     productId: currentProduct._id,
-        //                     name: currentProduct.name,
-        //                     image: currentProduct.image,
-        //                     price: currentProduct.price,
-        //                     quantity: quantity,
-        //                 },
-        //                 user: req.userId,
-        //             },
-        //         },
-        //         { new: true },
-        //     );
-        //     await res.json({
-        //         success: true,
-        //         message: 'add product to cart successful!',
-        //         cart: updateCart,
-        //     });
-        // }
     } catch (error) {
         console.log(error);
     }
-    // const { quantity } = req.body;
-    // const productId = req.params.id;
-    // const currentProduct = await Product.findById(productId);
-
-    // try {
-    //     const carts = await Cart.find({ user: req.userId }).populate('user', [
-    //         'username',
-    //     ]);
-    //     if (carts.length === 0) {
-    //         const newCart = new Cart({
-    //             cart: {
-    //                 name,
-    //                 image,
-    //                 category,
-    //                 description,
-    //                 price,
-    //             },
-    //             user: req.userId,
-    //         });
-    //         await newCart.save();
-    //         res.json({
-    //             success: true,
-    //             message: 'Create cart successful!',
-    //             cart: newCart,
-    //         });
-    //     }
-    // } catch (error) {
-    //     console.log(error);
-    //     res.status(500).json({
-    //         success: false,
-    //         message: 'Internal server error',
-    //     });
-    // }
 });
 
 // @route POST api/carts

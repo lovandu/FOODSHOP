@@ -186,6 +186,11 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmRkN
   "quantity":0
 }
 ###
+GET http://localhost:5000/api/carts
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmRkNThmNGM5ZTU3NzNhZGNkNmVmZTYiLCJpYXQiOjE2NTk0MzYyNDR9.-rKV-fAAz7hTjH1iard7SB9pnDhnPOQ8awiVZCzkVfw
+
+###
 GET http://localhost:5000/api/carts/reset
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmRkNThmNGM5ZTU3NzNhZGNkNmVmZTYiLCJpYXQiOjE2NTk0MzYyNDR9.-rKV-fAAz7hTjH1iard7SB9pnDhnPOQ8awiVZCzkVfw
@@ -193,7 +198,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmRkN
 
 POST http://localhost:5000/api/carts/62e2a5355438fa0d94e79398
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmRjZDA0YTFhOThkMzE2ZDQzOGIzMzQiLCJpYXQiOjE2NTk3NzYxMDh9.ck0MbNBSdOdfk6lA9NvL13UMVbdCA4U7FHUAsfePflE
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmRkNThmNGM5ZTU3NzNhZGNkNmVmZTYiLCJpYXQiOjE2NTk0MzYyNDR9.-rKV-fAAz7hTjH1iard7SB9pnDhnPOQ8awiVZCzkVfw
 
 {
   "quantity":1

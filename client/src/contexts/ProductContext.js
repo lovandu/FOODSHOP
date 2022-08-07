@@ -54,6 +54,20 @@ const ProductContextProvider = ({ children }) => {
             dispatch({ type: PRODUCT_LOADED_FAIL });
         }
     };
+    //  get products by category
+    const getProductsByCategory = async (category) => {
+        try {
+            const response = await axios.get(`${apiUrl}/products/${category}`);
+            if (response.data.success) {
+                dispatch({
+                    type: PRODUCT_LOADED_SUCCESS,
+                    payload: response.data.products,
+                });
+            }
+        } catch (error) {
+            dispatch({ type: PRODUCT_LOADED_FAIL });
+        }
+    };
 
     // Get all user products
     const getProducts = async () => {
@@ -125,6 +139,7 @@ const ProductContextProvider = ({ children }) => {
         getProducts,
         showAddProductModal,
         setShowAddProductModal,
+        getProductsByCategory,
         addProduct,
         deleteProduct,
         updateProduct,

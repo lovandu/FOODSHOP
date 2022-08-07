@@ -47,7 +47,7 @@ const CartContextProvider = ({ children }) => {
     };
     const resetCart = async () => {
         try {
-            const response = await axios.post(`${apiUrl}/carts/reset`);
+            const response = await axios.get(`${apiUrl}/carts/reset`);
             if (response.data.success) {
                 dispatch({ type: RESET_CART, payload: response.data.cart });
                 return response.data;

@@ -21,15 +21,15 @@ const UserSideBar = () => {
                 </div>
                 <ul className="sideBarUser__list">
                     <li className="sideBarUser__item">
-                        <Link style={{ textDecoration: 'none' }}>
+                        <Link style={{ textDecoration: 'none' }} to='/purchase' className="sideBarUser__item-useraccount">
                             <FontAwesomeIcon className='sideBarUser__item-icon' icon={faUserCircle} />
                             Tài khoản của tôi
                         </Link>
                     </li>
                     <li className="sideBarUser__item">
-                        <Link style={{ textDecoration: 'none' }}>
+                        <Link style={{ textDecoration: 'none' }} to='/purchase' className="sideBarUser__item-userpurchase">
                             <FontAwesomeIcon className='sideBarUser__item-icon' icon={faListAlt} />
-                            Tài khoản của tôi
+                            Đơn mua
                         </Link>
                     </li>
                 </ul>
