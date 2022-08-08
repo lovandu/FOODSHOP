@@ -136,7 +136,7 @@ function NavbarMain() {
                                     {/* <!-- No cart: header__cart--no-cart --> */}
                                     {/* {cart.length !==0 ? (cart.length) : (cart.length)} */}
                                     <div className="header__cart-list ">
-                                        {cart.length === 0 ? (
+                                        {cart === null ||cart.length === 0 ? (
                                             <Fragment>
                                                 <img
                                                     src={noCart}
