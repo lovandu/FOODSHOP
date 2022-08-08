@@ -35,7 +35,7 @@ const Home = () => {
     // });
 
     // const onClickFilter = async (category) => {
-    //     // dispatch({ type: FILTER_PRODUCT, payload: category });
+    //     dispatch({ type: FILTER_PRODUCT, payload: category });
     // };
 
     useEffect(() => getAllProducts(), []);
@@ -79,7 +79,7 @@ const Home = () => {
                                     action
                                     className="home__list-category"
                                     as="button"
-                                    // onClick={onClickFilter('food')}
+                                    // onClick={onClickFilter('dry')}
                                 >
                                     <p className="ml-3 mb-0">Thức Ăn</p>
                                 </ListGroup.Item>
@@ -116,7 +116,7 @@ const Home = () => {
                                         </Button>
                                         <Button
                                             variant="outline-success"
-                                            className="font-weight-bolder mt-2 ml-4 active"
+                                            className="font-weight-bolder mt-2 ml-4 "
                                         >
                                             Liên quan
                                         </Button>{' '}

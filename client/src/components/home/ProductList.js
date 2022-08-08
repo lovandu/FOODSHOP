@@ -17,7 +17,7 @@ const ProductList = ({ product: { _id, name, price, image } }) => {
     // };
     const productId = _id;
     const quantity = 1;
-    console.log('productId', productId);
+    // console.log('productId', productId);
     const addToCartHandle = async (event) => {
         event.preventDefault();
         await addToCart({ productId, quantity });

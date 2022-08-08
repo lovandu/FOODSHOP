@@ -33,6 +33,7 @@ function NavbarMain() {
 
     const {
         getCarts,
+        
         cartState: { cart },
     } = useContext(CartContext);
 
@@ -42,9 +43,10 @@ function NavbarMain() {
     //     cartMount = cart.length;
     // }
     // const cartEx = cart;
-    // console.log('cart', cart);
+    console.log('cart', cart);
 
     const logout = () => logoutUser();
+
     return (
         <>
             <Navbar expand="lg" bg="primary ">
@@ -54,13 +56,6 @@ function NavbarMain() {
                         to="/home"
                         as={Link}
                     >
-                        {/* <img
-					src={learnItLogo}
-					alt='learnItLogo'
-					width='32'
-					height='32'
-					className='mr-2'
-				/> */}
                         FOODSHOP
                     </Navbar.Brand>{' '}
                     <Navbar.Toggle aria-controls="navbarScroll" />
@@ -77,15 +72,7 @@ function NavbarMain() {
                             >
                                 Kênh người bán
                             </Nav.Link>
-                            {/* <NavDropdown title="Link" id="navbarScrollingDropdown">
-                                <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
-                                <NavDropdown.Item href="#action4">Another action</NavDropdown.Item>
-                                <NavDropdown.Divider />
-                                <NavDropdown.Item href="#action5">Something else here</NavDropdown.Item>
-                            </NavDropdown> */}
-                            {/* <Nav.Link href="#" disabled>
-                                Link
-                            </Nav.Link> */}
+
                         </Nav>
                         <Form className="d-flex ml-5">
                             <Form.Control
@@ -134,24 +121,7 @@ function NavbarMain() {
                             </NavDropdown>
                         </Nav>
                         <Nav>
-                            {/* <div className="header-cart-img">
-                                <FontAwesomeIcon
 
-                                className="ml-5 mt-1 text-white header-cart-icon "
-                                    icon={faCartShopping}
-                                />
-
-                                {/* <img
-                                    src={cartIcon}
-                                    alt="userImage"
-                                    style={{ color: '#fff !important' }}
-                                    width="32"
-                                    height="32"
-                                    className="ml-5 mt-1 text-white  "
-                                /> *
-                                <span className="header-cart-notice font-weight-bolder">{cartMount || '0'}</span>
-                            </div> */}
-                            {/* <!-- Cart layout --> */}
                             <div className="header__cart">
                                 <div className="header__cart-wrap">
                                     <FontAwesomeIcon
@@ -166,7 +136,7 @@ function NavbarMain() {
                                     {/* <!-- No cart: header__cart--no-cart --> */}
                                     {/* {cart.length !==0 ? (cart.length) : (cart.length)} */}
                                     <div className="header__cart-list ">
-                                        {cart === null || cart.length === 0? (
+                                        {cart.length === 0 ? (
                                             <Fragment>
                                                 <img
                                                     src={noCart}
@@ -187,7 +157,7 @@ function NavbarMain() {
                                                 <h4 className="header__cart-heading">
                                                     Sản phẩm đã thêm
                                                 </h4>
-                                                {cart.cart.map((item) => (
+                                                { cart.cart.map((item) => (
                                                     <ul
                                                         key={item._id}
                                                         className="header__cart-list-item"

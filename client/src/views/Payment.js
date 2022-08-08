@@ -10,9 +10,8 @@ import {
     Spinner,
     Table,
 } from 'react-bootstrap';
-import { ProductContext } from '../contexts/ProductContext';
 import { OrderContext } from '../contexts/OrderContext';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { CartContext } from '../contexts/CartContext';
 
 const Payment = ({ product, quantity }) => {
@@ -21,6 +20,7 @@ const Payment = ({ product, quantity }) => {
     //     productState: { products },
     //     getAllProducts,
     // } = useContext(ProductContext);
+    const history = useHistory();
 
     const { addOrders } = useContext(OrderContext);
 
@@ -84,6 +84,11 @@ const Payment = ({ product, quantity }) => {
         await addOrders(newOrder);
         console.log('bf resetCart');
         await resetCart();
+        console.log('af resetCart');
+
+        setTimeout(() => {
+            history.push('/purchase');
+        }, 1);
     };
 
     let body = null;
@@ -99,18 +104,14 @@ const Payment = ({ product, quantity }) => {
         body = (
             <>
                 <Breadcrumb className="grid-wide my-4">
-                        <BreadcrumbItem>
-                            <Link to="/home">Trang chủ</Link>
-                        </BreadcrumbItem>
-                        <BreadcrumbItem>
-                            <Link to="/cart">
-                                Giỏ hàng
-                            </Link>
-                        </BreadcrumbItem>
-                        <BreadcrumbItem active>
-                            Thanh toán
-                        </BreadcrumbItem>
-                    </Breadcrumb>
+                    <BreadcrumbItem>
+                        <Link to="/home">Trang chủ</Link>
+                    </BreadcrumbItem>
+                    <BreadcrumbItem>
+                        <Link to="/cart">Giỏ hàng</Link>
+                    </BreadcrumbItem>
+                    <BreadcrumbItem active>Thanh toán</BreadcrumbItem>
+                </Breadcrumb>
                 <Row className="payment-layout grid-wide">
                     <Col md="5" className="payment-left">
                         <div className="payment-title">
