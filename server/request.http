@@ -203,3 +203,8 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmRkN
 {
   "quantity":1
 }
+###
+# find products by name
+GET http://localhost:5000/api/products/search/basa
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmRkNThmNGM5ZTU3NzNhZGNkNmVmZTYiLCJpYXQiOjE2NTk0MzYyNDR9.-rKV-fAAz7hTjH1iard7SB9pnDhnPOQ8awiVZCzkVfw

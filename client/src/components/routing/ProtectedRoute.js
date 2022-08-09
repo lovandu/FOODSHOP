@@ -2,7 +2,6 @@ import { Route, Redirect } from 'react-router-dom'
 import { useContext } from 'react'
 import { AuthContext } from '../../contexts/AuthContext'
 import Spinner from 'react-bootstrap/Spinner'
-import NavbarMenu from '../layout/NavbarMenu'
 import NavbarMain from '../layout/NavbarMain'
 import Footer from '../layout/Footer'
 

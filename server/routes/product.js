@@ -8,7 +8,10 @@ const Product = require('../models/Product');
 // @access Private
 router.get('/', verifyToken, async (req, res) => {
     try {
-        const products = await Product.find({ user: req.userId }).populate('user', ['username']);
+        const products = await Product.find({ user: req.userId }).populate(
+            'user',
+            ['username'],
+        );
         res.json({ success: true, products });
     } catch (error) {}
 });
@@ -16,14 +19,21 @@ router.get('/', verifyToken, async (req, res) => {
 // @route GET api/products
 // @desc Find product by name
 // @access Private
-// router.get('/', verifyToken, async (req, res) => {
-    
-//     try {
-//         const products = await Product.find({ user: req.userId }).populate('user', ['username']);
-//         res.json({ success: true, products });
-//     } catch (error) {}
-// });
+router.get('/search/:name', verifyToken, async (req, res) => {
+    const searchKey = req.params.name;
 
+    try {
+        const products = await Product.find({
+            name: searchKey && new RegExp(searchKey, 'i'),
+        });
+        res.json({ success: true, products });
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: searchKey,
+        });
+    }
+});
 
 // @route GET api/products
 // @desc Get all products
@@ -66,7 +76,9 @@ router.post('/', verifyToken, async (req, res) => {
 
     // Simple validation
     if (!name) {
-        return res.status(400).json({ success: false, message: 'Product name is required' });
+        return res
+            .status(400)
+            .json({ success: false, message: 'Product name is required' });
     }
     try {
         const newProduct = new Product({
@@ -98,7 +110,10 @@ router.put('/:id', verifyToken, async (req, res) => {
     const { name, description, image, price, category } = req.body;
 
     // Simple validation
-    if (!name) return res.status(400).json({ succes: false, message: 'Product name is required' });
+    if (!name)
+        return res
+            .status(400)
+            .json({ succes: false, message: 'Product name is required' });
     try {
         let updateProduct = {
             name,
@@ -109,7 +124,11 @@ router.put('/:id', verifyToken, async (req, res) => {
         };
         const productUpdateCondition = { _id: req.params.id, user: req.userId };
 
-        updateProduct = await Product.findOneAndUpdate(productUpdateCondition, updateProduct, { new: true });
+        updateProduct = await Product.findOneAndUpdate(
+            productUpdateCondition,
+            updateProduct,
+            { new: true },
+        );
         // User not authorised to update product or product not found
         if (!updateProduct)
             return res.status(401).json({
@@ -135,7 +154,9 @@ router.put('/:id', verifyToken, async (req, res) => {
 router.delete('/:id', verifyToken, async (req, res) => {
     try {
         const productDeleteCondition = { _id: req.params.id, user: req.userId };
-        const deletedProduct = await Product.findOneAndDelete(productDeleteCondition);
+        const deletedProduct = await Product.findOneAndDelete(
+            productDeleteCondition,
+        );
 
         // User not authorised or product not found
         if (!deletedProduct)
