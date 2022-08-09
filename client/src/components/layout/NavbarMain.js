@@ -10,9 +10,9 @@ import {
 // import learnItLogo from '../../assets/logo.svg'
 // import logoutIcon from '../../assets/logout.svg'
 // import Button from 'react-bootstrap/Button'
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthContext';
-import { Fragment, useContext, useEffect } from 'react';
+import { Fragment, useContext, useEffect, useState } from 'react';
 import userIcon from '../../assets/person-circle.svg';
 // import userImage from '../../assets/userImage.jpg';
 
@@ -23,6 +23,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faCartShopping } from '@fortawesome/free-solid-svg-icons';
 
 function NavbarMain() {
+    const history = useHistory();
     // Context
     const {
         authState: {
@@ -33,19 +34,24 @@ function NavbarMain() {
 
     const {
         getCarts,
-        
+
         cartState: { cart },
     } = useContext(CartContext);
 
     useEffect(() => getCarts(), []);
-    // let cartMount = cart.length;
-    // if (cartState.length) {
-    //     cartMount = cart.length;
-    // }
-    // const cartEx = cart;
-    console.log('cart', cart);
 
+    // console.log('cart', cart);
+    const [search, setSearch] = useState('');
     const logout = () => logoutUser();
+
+    const onChangeNewProductForm = (event) => setSearch(event.target.value);
+    const onSubmit = (event) => {
+        event.preventDefault();
+        history.push({
+            pathname: `/search/${search}`,
+        });
+        setSearch('');
+    };
 
     return (
         <>
@@ -72,17 +78,23 @@ function NavbarMain() {
                             >
                                 Kênh người bán
                             </Nav.Link>
-
                         </Nav>
-                        <Form className="d-flex ml-5">
+                        <Form onSubmit={onSubmit} className="d-flex ml-5">
                             <Form.Control
                                 type="search"
                                 style={{ minWidth: '400px' }}
                                 placeholder="Tìm kiếm"
                                 className="me-2 "
                                 aria-label="Search"
+                                name="search"
+                                value={search}
+                                onChange={onChangeNewProductForm}
                             />
-                            <Button variant="danger" className="ml-1">
+                            <Button
+                                variant="danger"
+                                className="ml-1"
+                                type="submit"
+                            >
                                 <FontAwesomeIcon icon={faSearch} />
                             </Button>
                         </Form>
@@ -121,7 +133,6 @@ function NavbarMain() {
                             </NavDropdown>
                         </Nav>
                         <Nav>
-
                             <div className="header__cart">
                                 <div className="header__cart-wrap">
                                     <FontAwesomeIcon
@@ -136,7 +147,7 @@ function NavbarMain() {
                                     {/* <!-- No cart: header__cart--no-cart --> */}
                                     {/* {cart.length !==0 ? (cart.length) : (cart.length)} */}
                                     <div className="header__cart-list ">
-                                        {cart === null ||cart.length === 0 ? (
+                                        {cart === null || cart.length === 0 ? (
                                             <Fragment>
                                                 <img
                                                     src={noCart}
@@ -157,7 +168,7 @@ function NavbarMain() {
                                                 <h4 className="header__cart-heading">
                                                     Sản phẩm đã thêm
                                                 </h4>
-                                                { cart.cart.map((item) => (
+                                                {cart.cart.map((item) => (
                                                     <ul
                                                         key={item._id}
                                                         className="header__cart-list-item"

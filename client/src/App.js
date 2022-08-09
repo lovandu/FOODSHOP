@@ -13,6 +13,7 @@ import ProductDetail from './views/ProductDetail';
 import Payment from './views/Payment';
 import OrderContextProvider from './contexts/OrderContext';
 import Purchase from './views/Purchase';
+import Products from './views/Products';
 
 function App() {
     return (
@@ -56,6 +57,11 @@ function App() {
                                     exact
                                     path="/payment"
                                     component={Payment}
+                                />
+                                 <ProtectedRoute
+                                    exact
+                                    path="/search/:productName"
+                                    component={Products}
                                 />
 
                                 <ProtectedRoute
