@@ -6,9 +6,8 @@
 .navbar-light .navbar-nav .nav-link {
     color: #fff;
 }
-.navbar-light .navbar-nav .nav-link:hover{
+.navbar-light .navbar-nav .nav-link:hover {
     color: #fff;
-
 }
 .grid-wide {
     max-width: 1200px;
@@ -34,10 +33,10 @@
     top: 5px;
     width: 100px;
 }
-.home__list-category{
+.home__list-category {
     font-weight: 500;
 }
-.group-item-action:hover{
+.group-item-action:hover {
     background-color: #108154;
 }
 
@@ -156,8 +155,8 @@ button.post-button.btn:active {
 /* Floating add button */
 .btn-floating {
     position: fixed;
-    right: 3rem;
-    bottom: 3rem;
+    right: 30px;
+    top: 70%;
     background: transparent;
     border: none;
 }
@@ -486,30 +485,26 @@ button.post-button.btn:active {
 } */
 
 /* ProductDetail page */
-.breadcrumb{
+.breadcrumb {
     background-color: #fff;
 }
-.breadcrumb .active{
-
+.breadcrumb .active {
     color: #333;
     font-size: 20px;
     font-weight: 500;
-
 }
-.breadcrumb a{
+.breadcrumb a {
     color: #209574;
     font-size: 20px;
     font-weight: 500;
-
 }
-.breadcrumb a:hover{
+.breadcrumb a:hover {
     color: #333;
 }
-.breadcrumb-item+.breadcrumb-item::before{
+.breadcrumb-item + .breadcrumb-item::before {
     color: #333;
     font-size: 20px;
     font-weight: 500;
-
 }
 .product-detail-image {
     margin-top: 11px;
@@ -517,7 +512,7 @@ button.post-button.btn:active {
     height: 300px;
     border-radius: 4px;
 }
-.product-detail-price{
+.product-detail-price {
     font-size: 24px;
     color: #209574;
     font-weight: 500;
@@ -672,15 +667,14 @@ button.post-button.btn:active {
     transition: 0.2s linear;
 }
 
-
-.sideBarUser__item-useraccount{
+.sideBarUser__item-useraccount {
     color: #555;
     display: flex;
     align-items: center;
     margin-bottom: 15px;
     transition: all 0.2s linear;
 }
-.sideBarUser__item-userpurchase{
+.sideBarUser__item-userpurchase {
     color: #209574;
     display: flex;
     align-items: center;
@@ -726,7 +720,7 @@ button.post-button.btn:active {
     display: flex;
     align-items: center;
 }
-.purchase__main-item-header-right{
+.purchase__main-item-header-right {
     color: #ed6227;
 }
 .purchase__main-item-header-icon {
@@ -775,7 +769,6 @@ button.post-button.btn:active {
 .purchase__main-item-total {
     display: flex;
     align-items: center;
-
 }
 .purchase__main-item-total-text {
     margin-right: 10px;
@@ -787,3 +780,8 @@ button.post-button.btn:active {
     color: #0a6249;
     font-weight: 700;
 }
+.purchase__no-orders {
+    height: 300px;
+    text-align: center;
+}
+

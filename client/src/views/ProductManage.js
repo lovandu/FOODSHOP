@@ -1,7 +1,15 @@
 import React from 'react';
 import { ProductContext } from '../contexts/ProductContext';
 import { useContext, useEffect } from 'react';
-import { Spinner, Card, Button, Table, OverlayTrigger, Tooltip, ProgressBar } from 'react-bootstrap';
+import {
+    Spinner,
+    Card,
+    Button,
+    Table,
+    OverlayTrigger,
+    Tooltip,
+    ProgressBar,
+} from 'react-bootstrap';
 import ActionButtons from '../components/products/ActionButtons';
 import AddProductModal from '../components/products/AddProductModal';
 import addIcon from '../assets/plus-circle-fill.svg';
@@ -47,22 +55,39 @@ const ProductManage = () => {
     } else if (products.length === 0) {
         body = (
             <>
-                <Card className="text-center mx-5 mmy-5">
-                    <Card.Header as="h1">Hi </Card.Header>
-                    <Card.Body>
-                        <Card.Title>Chào mừng bạn đến với gian hàng</Card.Title>
-                        <Card.Text>Click để thêm mặt hàng đầu tiên của bạn!</Card.Text>
-                        <Button variant="primary" onClick={setShowAddProductModal.bind(this, true)}>
-                            Thêm mặt hàng!
-                        </Button>
-                    </Card.Body>
-                </Card>
+                <div className="grid-wide">
+                    <Card className="text-center mx-5 mmy-5 ">
+                        <Card.Header as="h2">
+                            Chào mừng bạn đến với gian hàng{' '}
+                        </Card.Header>
+                        <Card.Body>
+                            <Card.Title>
+                                Click để thêm mặt hàng đầu tiên của bạn!
+                            </Card.Title>
+                            <Button
+                                variant="primary"
+                                onClick={setShowAddProductModal.bind(
+                                    this,
+                                    true,
+                                )}
+                            >
+                                Thêm mặt hàng!
+                            </Button>
+                        </Card.Body>
+                    </Card>
+                </div>
             </>
         );
     } else {
         body = (
             <>
-                <Table responsive="sm" striped className="product-table grid-wide" bordered outlined>
+                <Table
+                    responsive="sm"
+                    striped
+                    className="product-table grid-wide"
+                    bordered
+                    outlined
+                >
                     <thead>
                         <tr>
                             <th>STT</th>
@@ -92,10 +117,19 @@ const ProductManage = () => {
                 <OverlayTrigger
                     className="addProduct-button"
                     placement="left"
-                    overlay={<Tooltip>Add product to sale</Tooltip>}
+                    overlay={<Tooltip>Thêm mặt hàng mới</Tooltip>}
                 >
-                    <Button className="btn-floating" onClick={setShowAddProductModal.bind(this, true)}>
-                        <img src={addIcon} alt="add-post" width="60" height="60" className="text-center" />
+                    <Button
+                        className="btn-floating"
+                        onClick={setShowAddProductModal.bind(this, true)}
+                    >
+                        <img
+                            src={addIcon}
+                            alt="add-post"
+                            width="60"
+                            height="60"
+                            className="text-center"
+                        />
                     </Button>
                 </OverlayTrigger>
             </>
@@ -106,7 +140,10 @@ const ProductManage = () => {
         <>
             {/* <div className="bg-gray-color full-screen"> */}
             <h1 className="text-center pt-5"> Mặt hàng của bạn</h1>
-            <ProgressBar now={100} className="cart-page-progressbar mb-5 grid-wide" />
+            <ProgressBar
+                now={100}
+                className="cart-page-progressbar mb-5 grid-wide"
+            />
 
             {body}
             <AddProductModal />

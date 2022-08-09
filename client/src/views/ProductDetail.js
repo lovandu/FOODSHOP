@@ -114,7 +114,7 @@ const ProductDetail = () => {
                                         Freeship nội thành đơn hàng trên 99.000đ
                                     </p>
                                     <Form.Group className="mt-5 mr-5">
-                                        <Link
+                                        {/* <Link
                                             to={{
                                                 pathname: '/payment',
                                                 product:
@@ -123,14 +123,14 @@ const ProductDetail = () => {
                                                         : product,
                                                 quantity: quantity,
                                             }}
-                                        >
+                                        > */}
                                             <Button
                                                 variant="success"
                                                 className="mr-3 product-detail-buy-button"
                                             >
                                                 MUA NGAY
                                             </Button>
-                                        </Link>
+                                        {/* </Link> */}
                                         <Button
                                             variant="outline-success"
                                             className="product-detail-addCart-button"

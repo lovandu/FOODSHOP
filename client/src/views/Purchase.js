@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react';
-import { Col, Row, Tab, Tabs } from 'react-bootstrap';
+import { Col, Container, Row, Tab, Tabs } from 'react-bootstrap';
 import UserSideBar from '../components/auth/UserSideBar';
 import Order from '../components/order/Order';
 import { OrderContext } from '../contexts/OrderContext';
@@ -32,7 +32,9 @@ const Purchase = () => {
                                 title="Tất cả"
                             >
                                 {orders.length === 0 ? (
-                                    <span>Chưa có đơn hàng nào</span>
+                                    <div className='purchase__no-orders'>
+                                        <span className='purchase__no-orders-text mt-5'>Chưa có đơn hàng nào</span>
+                                    </div>
                                 ) : (
                                     orders.map((order, index) => (
                                         <Order order={order} key={index} />
