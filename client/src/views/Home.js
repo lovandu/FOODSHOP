@@ -25,6 +25,7 @@ const Home = () => {
 
     const {
         productState: { products, productLoading },
+        dispatch,
         getAllProducts,
         getProductsByCategory,
     } = useContext(ProductContext);
@@ -34,9 +35,9 @@ const Home = () => {
     //     productLoading: true,
     // });
 
-    // const onClickFilter = async (category) => {
-    //     dispatch({ type: FILTER_PRODUCT, payload: category });
-    // };
+    const onClickFilter = async (category) => {
+        dispatch({ type: FILTER_PRODUCT, payload: category });
+    };
 
     useEffect(() => getAllProducts(), []);
     let body = null;

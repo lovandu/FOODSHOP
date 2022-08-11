@@ -163,6 +163,7 @@ const ProductContextProvider = ({ children }) => {
     // Product context data
     const ProductContextData = {
         productState,
+        dispatch,
         getProducts,
         showAddProductModal,
         setShowAddProductModal,

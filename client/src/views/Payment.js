@@ -207,6 +207,7 @@ const Payment = ({ product, quantity }) => {
                                     type="radio"
                                     label="Thanh toán tiền mặt"
                                     value={paymentMethod}
+                                    required
                                     name="paymentMethod"
                                     id="paymentid"
                                 ></Form.Check>
