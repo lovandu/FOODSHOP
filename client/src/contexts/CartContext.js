@@ -61,7 +61,7 @@ const CartContextProvider = ({ children }) => {
     // Update cart
     const updateCart = async (updateCart) => {
         try {
-            const response = await axios.put(
+            const response = await axios.post(
                 `${apiUrl}/carts/${updateCart._id}`,
                 updateCart,
             );

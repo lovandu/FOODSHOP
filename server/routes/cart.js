@@ -20,42 +20,56 @@ router.get('/', verifyToken, async (req, res) => {
 // @access Private
 router.post('/:productId', verifyToken, async (req, res) => {
     try {
-        const productId = req.params.productId;
+        const productId = req.params.productId.toString();
         const { quantity } = req.body;
+        const cartCondition = { user: req.userId };
 
-        const carts = await Cart.findOne({ user: req.userId }).populate(
-            'user',
-            ['username'],
-        );
+        const carts = await Cart.findOne(cartCondition);
+        console.log('carts:', carts);
         let item = null;
 
-        if (carts !== null && carts.length >= 0) {
-            item = carts.cart.find((x) => {
-                return x.productId === productId;
+        if (carts) {
+            item = carts.cart.find((cart) => {
+                return cart.productId.toString() === req.params.productId;
             });
         }
         const productUpdateCondition = { _id: req.params.productId };
 
         const product = await Product.findOne(productUpdateCondition);
-        const currentProduct = await Product.findById(productId);
-        if (carts === null) {
-            const newCart = new Cart({
-                cart: {
-                    productId: product._id,
-                    name: product.name,
-                    image: product.image,
-                    price: product.price,
-                    quantity: quantity,
+        // console.log('product', product);
+        const updateCondition = {
+            _id: carts._id,
+            'cart.productId': productId,
+        };
+        if (item && quantity === 0) {
+            const updateCart = await Cart.findOneAndUpdate(
+                {
+                    updateCondition,
                 },
-                user: req.userId,
-            });
-            await newCart.save();
-            res.json({
+                {
+                    $pull: {
+                        cart: {
+                            productId: productId,
+                        },
+                    },
+                },
+                { new: true },
+            );
+            await res.json({
                 success: true,
-                message: 'Create a new cart successful!',
-                cart: newCart,
+                message: 'remove product from cart successful!',
+                cart: updateCart,
             });
+            console.log('remove product from cart successful!');
         } else if (item) {
+            console.log('item:', item);
+            console.log('item.quantity_before:', quantity);
+            const updateBefore = await Cart.findOne({
+                updateCondition,
+            });
+            console.log('updateBefore:', updateBefore);
+            console.log('req.params.productId:', req.params.productId);
+
             const updateCart = await Cart.findOneAndUpdate(
                 {
                     _id: carts._id,
@@ -71,30 +85,30 @@ router.post('/:productId', verifyToken, async (req, res) => {
                 },
                 { new: true },
             );
+            console.log('item.quantity_after:', item.quantity);
+            console.log('updateCart:', updateCart);
+
             await res.json({
                 success: true,
-                message: 'set a new cart successful!',
+                message: 'update product quantity to cart successful!',
                 cart: updateCart,
             });
-        } else if (item && quantity === 0) {
-            const updateCart = await Cart.findOneAndUpdate(
-                {
-                    _id: carts._id,
-                    'cart.productId': productId,
+        } else if (carts === null) {
+            const newCart = new Cart({
+                cart: {
+                    productId: product._id.toString(),
+                    name: product.name,
+                    image: product.image,
+                    price: product.price,
+                    quantity: quantity,
                 },
-                {
-                    $pull: {
-                        cart: {
-                            productId: productId,
-                        },
-                    },
-                },
-                { new: true },
-            );
-            await res.json({
+                user: req.userId,
+            });
+            await newCart.save();
+            res.json({
                 success: true,
-                message: 'set a new cart successful!',
-                cart: updateCart,
+                message: 'Create a new cart successful!',
+                cart: newCart,
             });
         } else {
             const updateCart = await Cart.findOneAndUpdate(
@@ -104,7 +118,7 @@ router.post('/:productId', verifyToken, async (req, res) => {
                 {
                     $push: {
                         cart: {
-                            productId: product._id,
+                            productId: product._id.toString(),
                             name: product.name,
                             image: product.image,
                             price: product.price,
@@ -116,7 +130,7 @@ router.post('/:productId', verifyToken, async (req, res) => {
             );
             await res.json({
                 success: true,
-                message: 'push a  cart successful!',
+                message: 'add a product item on cart successful!',
                 cart: updateCart,
             });
         }
@@ -151,6 +165,7 @@ router.get('/reset', verifyToken, async (req, res) => {
             message: 'Internal server error',
         });
     }
+    console.log('reset a new cart successful!');
 });
 
 // @route DELETE api/carts

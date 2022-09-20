@@ -48,6 +48,7 @@ const Payment = ({ product, quantity }) => {
     console.log('productsList', productsList);
 
     useEffect(() => getCarts(), []);
+    
     const convertNumberToMoney = (number) => {
         const cent = new Intl.NumberFormat('vi-VN', {
             style: 'currency',
