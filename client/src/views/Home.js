@@ -20,31 +20,42 @@ const Home = () => {
         productState: { products, productLoading },
         getAllProducts,
     } = useContext(ProductContext);
-    const [productsState, setProductsState] = useState(products);
 
     useEffect(() => getAllProducts(), []);
-    
-    let prods = products;
+
+    const [productsState, setProductsState] = useState(products);
+    console.log('productsState', productsState);
 
     const onClickFilterAll = (event) => {
         event.preventDefault();
-        setProductsState( products);
+        setProductsState(products);
     };
     const onClickFilterDry = (event) => {
         event.preventDefault();
         const filter = 'dry';
-        setProductsState( products.filter((product) => product.category === filter))
+        setProductsState(
+            products.filter((product) => product.category === filter),
+        );
     };
     const onClickFilterFood = (event) => {
         event.preventDefault();
         const filter = 'food';
-        setProductsState( products.filter((product) => product.category === filter))
+        setProductsState(
+            products.filter((product) => product.category === filter),
+        );
     };
     const onClickFilterBeverage = (event) => {
         event.preventDefault();
         const filter = 'beverage';
-        setProductsState( products.filter((product) => product.category === filter))
+        setProductsState(
+            products.filter((product) => product.category === filter),
+        );
     };
+
+    const onClickSortByPrice = (event) => {
+        event.preventDefault();
+    };
+
     let body = null;
 
     if (productLoading) {
@@ -164,15 +175,25 @@ const Home = () => {
                                 </Row>
                             </Container>
                             <Row className="my-2">
-                                {productsState.map((product) => (
-                                    <Col
-                                        xs={3}
-                                        key={product._id}
-                                        className="my-2"
-                                    >
-                                        <ProductList product={product} />
-                                    </Col>
-                                ))}
+                                {productsState.length === 0
+                                    ? products.map((product) => (
+                                          <Col
+                                              xs={3}
+                                              key={product._id}
+                                              className="my-2"
+                                          >
+                                              <ProductList product={product} />
+                                          </Col>
+                                      ))
+                                    : productsState.map((product) => (
+                                          <Col
+                                              xs={3}
+                                              key={product._id}
+                                              className="my-2"
+                                          >
+                                              <ProductList product={product} />
+                                          </Col>
+                                      ))}
                             </Row>
                         </Col>
                     </Row>
