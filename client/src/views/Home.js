@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import {
     Button,
     Col,
@@ -20,11 +20,30 @@ const Home = () => {
         productState: { products, productLoading },
         getAllProducts,
     } = useContext(ProductContext);
+    const [productsState, setProductsState] = useState(products);
 
     useEffect(() => getAllProducts(), []);
-    const onClickFilter = () => {
+    
+    let prods = products;
+
+    const onClickFilterAll = (event) => {
+        event.preventDefault();
+        setProductsState( products);
+    };
+    const onClickFilterDry = (event) => {
+        event.preventDefault();
         const filter = 'dry';
-        console.log(products.filter((product) => product.category === filter));
+        setProductsState( products.filter((product) => product.category === filter))
+    };
+    const onClickFilterFood = (event) => {
+        event.preventDefault();
+        const filter = 'food';
+        setProductsState( products.filter((product) => product.category === filter))
+    };
+    const onClickFilterBeverage = (event) => {
+        event.preventDefault();
+        const filter = 'beverage';
+        setProductsState( products.filter((product) => product.category === filter))
     };
     let body = null;
 
@@ -58,6 +77,7 @@ const Home = () => {
                                     action
                                     className="home__list-category"
                                     // className="font-weight-bolder  "
+                                    onClick={onClickFilterAll}
                                 >
                                     <p className="ml-3 mb-0 ">Tất Cả</p>
                                 </ListGroup.Item>
@@ -66,7 +86,7 @@ const Home = () => {
                                     action
                                     className="home__list-category"
                                     as="button"
-                                    // onClick={onClickFilter('dry')}
+                                    onClick={onClickFilterFood}
                                 >
                                     <p className="ml-3 mb-0">Thức Ăn</p>
                                 </ListGroup.Item>
@@ -75,7 +95,7 @@ const Home = () => {
                                     action
                                     className="home__list-category"
                                     as="button"
-                                    // onClick={onClickFilter('dry')}
+                                    onClick={onClickFilterBeverage}
                                 >
                                     <p className="ml-3 mb-0">Đồ Uống</p>
                                 </ListGroup.Item>
@@ -84,7 +104,7 @@ const Home = () => {
                                     action
                                     className="home__list-category"
                                     as="button"
-                                    onClick={onClickFilter}
+                                    onClick={onClickFilterDry}
                                 >
                                     <p className="ml-3 mb-0">Đồ Khô</p>
                                 </ListGroup.Item>
@@ -144,7 +164,7 @@ const Home = () => {
                                 </Row>
                             </Container>
                             <Row className="my-2">
-                                {products.map((product) => (
+                                {productsState.map((product) => (
                                     <Col
                                         xs={3}
                                         key={product._id}
