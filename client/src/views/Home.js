@@ -124,7 +124,7 @@ const Home = () => {
                         <Col xs={10}>
                             <Container
                                 fluid
-                                className="sort-product-home disabled "
+                                className="sort-product-home  "
                             >
                                 <Row>
                                     <Col xs={2}>
@@ -135,19 +135,19 @@ const Home = () => {
                                     <Col xs={8}>
                                         <Button
                                             variant="outline-success"
-                                            className="font-weight-bolder mt-2 disabled "
+                                            className="font-weight-bolder mt-2 disabled btn-sort-products"
                                         >
                                             Bán chạy
                                         </Button>
                                         <Button
                                             variant="outline-success"
-                                            className="font-weight-bolder mt-2 ml-4 disabled "
+                                            className="font-weight-bolder mt-2 ml-4 disabled btn-sort-products"
                                         >
                                             Liên quan
                                         </Button>{' '}
                                         <Button
                                             variant="outline-success"
-                                            className="font-weight-bolder mt-2 ml-3 disabled"
+                                            className="font-weight-bolder mt-2 ml-3 disabled btn-sort-products"
                                         >
                                             Mới nhất
                                         </Button>{' '}
@@ -158,7 +158,7 @@ const Home = () => {
                                             <Dropdown.Toggle
                                                 variant="outline-success"
                                                 id="dropdown-basic"
-                                                className="font-weight-bolder disabled"
+                                                className="font-weight-bolder "
                                             >
                                                 Giá
                                             </Dropdown.Toggle>

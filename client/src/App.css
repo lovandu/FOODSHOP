@@ -28,6 +28,10 @@
     background-color: rgba(0, 0, 0, 0.03);
     height: 64px;
 }
+.btn-sort-products:hover{
+    color:#8fdbbd ;
+    cursor: default;
+}
 .product-sort-dropdown {
     display: inline-flex;
     top: 5px;
