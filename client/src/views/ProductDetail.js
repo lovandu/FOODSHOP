@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
 import {
-    Badge,
     Breadcrumb,
     BreadcrumbItem,
     Button,
@@ -9,10 +8,13 @@ import {
     Form,
     ProgressBar,
     Row,
+    InputGroup,
 } from 'react-bootstrap';
 import { Link, useParams } from 'react-router-dom';
 import { CartContext } from '../contexts/CartContext';
 import { ProductContext } from '../contexts/ProductContext';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {  faMinus, faPlus } from '@fortawesome/free-solid-svg-icons';
 
 const ProductDetail = () => {
     const {
@@ -25,9 +27,8 @@ const ProductDetail = () => {
     const { productId } = useParams();
     const [quantity, setQuantity] = useState(1);
     // Start: Get a product
+    // console.log('id',productId )
     useEffect(() => getAProduct(productId), []);
-    console.log('product ', product);
-    console.log('quantity ', quantity);
     const convertNumberToMoney = (number) => {
         const cent = new Intl.NumberFormat('vi-VN', {
             style: 'currency',
@@ -91,24 +92,52 @@ const ProductDetail = () => {
                                         <Form.Label className="mr-2 ml-4">
                                             Số lượng:
                                         </Form.Label>
-                                        <Button
+                                        <InputGroup className="">
+                                            <Button
+                                                variant="success"
+                                                className="product-detail-button"
+                                                onClick={(e)=>{
+                                                    e.preventDefault();
+                                                    setQuantity(quantity===1?1:(quantity-1))
+                                                }}
+                                            >
+                                                <FontAwesomeIcon icon={faMinus} />
+                                            </Button>{' '}
+                                            <Form.Control
+                                                readOnly
+                                                value={quantity}
+                                                className="table-item-mount-product "
+                                            />
+                                            <Button
+                                                variant="success"
+                                                className="product-detail-button"
+                                                onClick={(e)=>{
+                                                    e.preventDefault();
+                                                    setQuantity((quantity+1))
+                                                }}
+                                            >
+                                                <FontAwesomeIcon icon={faPlus} />
+                                            </Button>
+                                        </InputGroup>
+                                        {/* <Button
                                             variant="success"
                                             className="product-detail-button"
                                         >
                                             +
                                         </Button>
-                                        <Badge
+                                        <InputGroup
+                                            id="quantity"
+                                            name="quantity"
                                             bg="primary"
+                                            value={quantity}
                                             className="table-item-mount-product "
-                                        >
-                                            1
-                                        </Badge>
+                                        ></InputGroup>
                                         <Button
                                             variant="success"
                                             className="product-detail-button"
                                         >
                                             -
-                                        </Button>
+                                        </Button> */}
                                     </Form.Group>
                                     <p className="product-detail-shippingFee ml-4">
                                         Freeship nội thành đơn hàng trên 99.000đ
@@ -124,12 +153,12 @@ const ProductDetail = () => {
                                                 quantity: quantity,
                                             }}
                                         > */}
-                                            <Button
-                                                variant="success"
-                                                className="mr-3 product-detail-buy-button"
-                                            >
-                                                MUA NGAY
-                                            </Button>
+                                        <Button
+                                            variant="success"
+                                            className="mr-3 product-detail-buy-button"
+                                        >
+                                            MUA NGAY
+                                        </Button>
                                         {/* </Link> */}
                                         <Button
                                             variant="outline-success"

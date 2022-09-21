@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useReducer } from 'react';
+import React, { useContext, useEffect } from 'react';
 import {
     Breadcrumb,
     BreadcrumbItem,
@@ -14,8 +14,6 @@ import ProductList from '../components/home/ProductList';
 // import { AuthContext } from '../contexts/AuthContext';
 import { ProductContext } from '../contexts/ProductContext';
 import listIcon from '../assets/list.svg';
-import { productReducer } from '../reducers/productReducer';
-import { FILTER_PRODUCT } from '../contexts/constants';
 import { Link, useParams } from 'react-router-dom';
 
 const Products = () => {

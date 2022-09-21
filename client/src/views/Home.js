@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useReducer } from 'react';
+import React, { useContext, useEffect } from 'react';
 import {
     Button,
     Col,
@@ -12,34 +12,20 @@ import ProductList from '../components/home/ProductList';
 // import { AuthContext } from '../contexts/AuthContext';
 import { ProductContext } from '../contexts/ProductContext';
 import listIcon from '../assets/list.svg';
-import { productReducer } from '../reducers/productReducer';
-import { FILTER_PRODUCT } from '../contexts/constants';
 
 const Home = () => {
     // Contexts
-    // const {
-    //     authState: {
-    //         user: { username },
-    //     },
-    // } = useContext(AuthContext);
 
     const {
         productState: { products, productLoading },
-        dispatch,
         getAllProducts,
-        getProductsByCategory,
     } = useContext(ProductContext);
-    // const [productState, dispatch] = useReducer(productReducer, {
-    //     product: null,
-    //     products: products,
-    //     productLoading: true,
-    // });
-
-    const onClickFilter = async (category) => {
-        dispatch({ type: FILTER_PRODUCT, payload: category });
-    };
 
     useEffect(() => getAllProducts(), []);
+    const onClickFilter = () => {
+        const filter = 'dry';
+        console.log(products.filter((product) => product.category === filter));
+    };
     let body = null;
 
     if (productLoading) {
@@ -56,7 +42,7 @@ const Home = () => {
                 <div className="grid-wide my-5">
                     <Row>
                         <Col xs={2}>
-                            <ListGroup className="font-weight-bolder">
+                            <ListGroup className="font-weight-bolder disabled">
                                 <ListGroup.Item variant="danger" active>
                                     <img
                                         src={listIcon}
@@ -73,7 +59,7 @@ const Home = () => {
                                     className="home__list-category"
                                     // className="font-weight-bolder  "
                                 >
-                                    <p className="ml-3 mb-0">Tất Cả</p>
+                                    <p className="ml-3 mb-0 ">Tất Cả</p>
                                 </ListGroup.Item>
                                 <ListGroup.Item
                                     variant="success"
@@ -88,6 +74,8 @@ const Home = () => {
                                     variant="success"
                                     action
                                     className="home__list-category"
+                                    as="button"
+                                    // onClick={onClickFilter('dry')}
                                 >
                                     <p className="ml-3 mb-0">Đồ Uống</p>
                                 </ListGroup.Item>
@@ -95,13 +83,18 @@ const Home = () => {
                                     variant="success"
                                     action
                                     className="home__list-category"
+                                    as="button"
+                                    onClick={onClickFilter}
                                 >
                                     <p className="ml-3 mb-0">Đồ Khô</p>
                                 </ListGroup.Item>
                             </ListGroup>
                         </Col>
                         <Col xs={10}>
-                            <Container fluid className="sort-product-home ">
+                            <Container
+                                fluid
+                                className="sort-product-home disabled "
+                            >
                                 <Row>
                                     <Col xs={2}>
                                         <p className="mt-3 font-weight-bolder">
@@ -111,19 +104,19 @@ const Home = () => {
                                     <Col xs={8}>
                                         <Button
                                             variant="outline-success"
-                                            className="font-weight-bolder mt-2 "
+                                            className="font-weight-bolder mt-2 disabled "
                                         >
                                             Bán chạy
                                         </Button>
                                         <Button
                                             variant="outline-success"
-                                            className="font-weight-bolder mt-2 ml-4 "
+                                            className="font-weight-bolder mt-2 ml-4 disabled "
                                         >
                                             Liên quan
                                         </Button>{' '}
                                         <Button
                                             variant="outline-success"
-                                            className="font-weight-bolder mt-2 ml-3 "
+                                            className="font-weight-bolder mt-2 ml-3 disabled"
                                         >
                                             Mới nhất
                                         </Button>{' '}
@@ -134,11 +127,11 @@ const Home = () => {
                                             <Dropdown.Toggle
                                                 variant="outline-success"
                                                 id="dropdown-basic"
-                                                className="font-weight-bolder"
+                                                className="font-weight-bolder disabled"
                                             >
                                                 Giá
                                             </Dropdown.Toggle>
-                                            <Dropdown.Menu>
+                                            <Dropdown.Menu className="">
                                                 <Dropdown.Item href="#/action-1">
                                                     Giá từ thấp đến cao
                                                 </Dropdown.Item>

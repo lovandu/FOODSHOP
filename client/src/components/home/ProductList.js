@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
-import { Button, Card, Col, Row } from 'react-bootstrap';
+import { Button, Card} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import aoImg from '../../assets/ao1.jpg';
 import { CartContext } from '../../contexts/CartContext';
 const ProductList = ({ product: { _id, name, price, image } }) => {
     const { addToCart } = useContext(CartContext);

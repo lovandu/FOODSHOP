@@ -5,7 +5,6 @@ import {
     Button,
     Col,
     Form,
-    ProgressBar,
     Row,
     Spinner,
     Table,
@@ -66,12 +65,10 @@ const Payment = ({ product, quantity }) => {
         status: true,
     });
     const {
-        productList,
         userName,
         userAddress,
         userPhone,
         paymentMethod,
-        status,
     } = newOrder;
 
     const onChangeNewOrderForm = (event) =>

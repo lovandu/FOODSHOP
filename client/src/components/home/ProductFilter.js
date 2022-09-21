@@ -4,13 +4,21 @@ import listIcon from '../../assets/list.svg';
 function ProductFilter() {
     return (
         <>
-            <ListGroup>
+            <ListGroup className="disabled">
                 <ListGroup.Item variant="danger">
-                    <img src={listIcon} alt="List Icon" height="24" width="24" className="mr-3" />
+                    <img
+                        src={listIcon}
+                        alt="List Icon"
+                        height="24"
+                        width="24"
+                        className="mr-3"
+                    />
                     Danh mục
                 </ListGroup.Item>
-                <ListGroup.Item variant="success" active
-                // className="font-weight-bolder  "
+                <ListGroup.Item
+                    variant="success"
+                    active
+                    // className="font-weight-bolder  "
                 >
                     <p className="ml-3 mb-0">Tất Cả</p>
                 </ListGroup.Item>

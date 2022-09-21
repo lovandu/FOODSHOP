@@ -3,24 +3,15 @@ import React, { useContext, useEffect } from 'react';
 import { Breadcrumb, BreadcrumbItem, Button, ProgressBar, Spinner, Table } from 'react-bootstrap';
 import { CartContext } from '../contexts/CartContext';
 import { faFaceFrown } from '@fortawesome/free-solid-svg-icons';
-import { ProductContext } from '../contexts/ProductContext';
 import TableItem from '../components/cart/TableItem';
 import { Link } from 'react-router-dom';
 
 const Cart = () => {
-    // const {
-    //     cartState: { cart, cartLoading },
-    // } = useContext(CartContext);
-    // const {
-    //     productState: { products },
-    //     getAllProducts,
-    // } = useContext(ProductContext);
-    // useEffect(() => getAllProducts(), []);
     const {
         getCarts,
         cartState: { cart, cartLoading },
     } = useContext(CartContext);
-
+    console.log('cart',cart)
     useEffect(() => getCarts(), []);
     const convertNumberToMoney = (number) => {
         const cent = new Intl.NumberFormat('vi-VN', {

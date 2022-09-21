@@ -16,7 +16,7 @@ const UserSideBar = () => {
         <>
             <div className="sideBarUser">
                 <div className="sideBarUser__info">
-                    <img className="sideBarUser__image" src={userImage} />
+                    <img className="sideBarUser__image" src={userImage} alt='userImage' />
                     <span>{username}</span>
                 </div>
                 <ul className="sideBarUser__list">

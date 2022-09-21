@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react';
-import { Col, Container, Row, Tab, Tabs } from 'react-bootstrap';
+import { Col, Row, Tab, Tabs } from 'react-bootstrap';
 import UserSideBar from '../components/auth/UserSideBar';
 import Order from '../components/order/Order';
 import { OrderContext } from '../contexts/OrderContext';

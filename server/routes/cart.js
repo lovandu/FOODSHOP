@@ -25,7 +25,6 @@ router.post('/:productId', verifyToken, async (req, res) => {
         const cartCondition = { user: req.userId };
 
         const carts = await Cart.findOne(cartCondition);
-        console.log('carts:', carts);
         let item = null;
 
         if (carts) {
@@ -36,15 +35,11 @@ router.post('/:productId', verifyToken, async (req, res) => {
         const productUpdateCondition = { _id: req.params.productId };
 
         const product = await Product.findOne(productUpdateCondition);
-        // console.log('product', product);
-        const updateCondition = {
-            _id: carts._id,
-            'cart.productId': productId,
-        };
         if (item && quantity === 0) {
             const updateCart = await Cart.findOneAndUpdate(
                 {
-                    updateCondition,
+                    _id: carts._id,
+                    'cart.productId': productId,
                 },
                 {
                     $pull: {
@@ -60,16 +55,7 @@ router.post('/:productId', verifyToken, async (req, res) => {
                 message: 'remove product from cart successful!',
                 cart: updateCart,
             });
-            console.log('remove product from cart successful!');
         } else if (item) {
-            console.log('item:', item);
-            console.log('item.quantity_before:', quantity);
-            const updateBefore = await Cart.findOne({
-                updateCondition,
-            });
-            console.log('updateBefore:', updateBefore);
-            console.log('req.params.productId:', req.params.productId);
-
             const updateCart = await Cart.findOneAndUpdate(
                 {
                     _id: carts._id,
@@ -85,8 +71,6 @@ router.post('/:productId', verifyToken, async (req, res) => {
                 },
                 { new: true },
             );
-            console.log('item.quantity_after:', item.quantity);
-            console.log('updateCart:', updateCart);
 
             await res.json({
                 success: true,
@@ -134,9 +118,7 @@ router.post('/:productId', verifyToken, async (req, res) => {
                 cart: updateCart,
             });
         }
-    } catch (error) {
-        console.log(error);
-    }
+    } catch (error) {}
 });
 
 // @route POST api/carts
@@ -159,13 +141,11 @@ router.get('/reset', verifyToken, async (req, res) => {
             cart: resetCart,
         });
     } catch (error) {
-        console.log(error);
         res.status(500).json({
             success: false,
             message: 'Internal server error',
         });
     }
-    console.log('reset a new cart successful!');
 });
 
 // @route DELETE api/carts
@@ -184,7 +164,6 @@ router.delete('/:id', verifyToken, async (req, res) => {
             });
         res.json({ succes: true, product: deletedCart });
     } catch (error) {
-        console.log(error);
         res.status(500).json({
             success: false,
             message: 'Internal server error',

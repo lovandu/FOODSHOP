@@ -4,16 +4,12 @@ import { Link } from 'react-router-dom';
 import { useContext, useState } from 'react';
 import { AuthContext } from '../../contexts/AuthContext';
 import AlertMessage from '../layout/AlertMessage';
-import { CartContext } from '../../contexts/CartContext';
 
 const RegisterForm = () => {
     // Context
     const { registerUser } = useContext(AuthContext);
 
     // Local state
-    const {
-
-    } = useContext(CartContext);
 
 	
     const [registerForm, setRegisterForm] = useState({

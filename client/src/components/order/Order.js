@@ -1,9 +1,7 @@
 import { faShippingFast } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useContext, useEffect } from 'react';
 import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { ProductContext } from '../../contexts/ProductContext';
 
 const Order = ({ order }) => {
     // const {
