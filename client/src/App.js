@@ -32,7 +32,6 @@ function App() {
                                         <Auth {...props} authRoute="login" />
                                     )}
                                 />
-                                {/* No other routes match */}
                                 <Route
                                     exact
                                     path="/register"
@@ -74,9 +73,11 @@ function App() {
                                 />
                                 <ProtectedRoute
                                     exact
-                                    path="/:productId"
+                                    path="/product/:productId"
                                     component={ProductDetail}
                                 />
+                                {/* No other routes match */}
+
                                 <Route component={NotFound}/>
 
                             </Switch>

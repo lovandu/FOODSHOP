@@ -24,7 +24,7 @@ const TableItem = ({
     return (
         <tr>
             <th>
-                <Link to={`/${productId}`} style={{ textDecoration: 'none' }}>
+                <Link to={`/product/${productId}`} style={{ textDecoration: 'none' }}>
                     <div className="cart-product-info">
                         <img
                             src={image}

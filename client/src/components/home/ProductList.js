@@ -25,7 +25,7 @@ const ProductList = ({ product: { _id, name, price, image } }) => {
     return (
         <>
             <Card style={{ width: '230px', height: '300px' }}>
-                <Link to={`/${_id}`} style={{ textDecoration: 'none' }}>
+                <Link to={`/product/${_id}`} style={{ textDecoration: 'none' }}>
                     <Card.Img
                         variant="top"
                         src={image}

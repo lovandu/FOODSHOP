@@ -37,7 +37,7 @@ const Order = ({ order }) => {
                 <div className="purchase__main-item-productsList">
                     {order.productsList.map((item, index) => (
                         <Link
-                            to={`/${item.productId}`}
+                            to={`/product/${item.productId}`}
                             className="purchase__main-item-product"
                             key={index}
                             style={{ textDecoration: 'none' }}
