@@ -24,7 +24,6 @@ const Home = () => {
     useEffect(() => getAllProducts(), []);
 
     const [productsState, setProductsState] = useState(products);
-    console.log('productsState', productsState);
 
     const onClickFilterAll = (event) => {
         event.preventDefault();
@@ -52,9 +51,9 @@ const Home = () => {
         );
     };
 
-    const onClickSortByPrice = (event) => {
-        event.preventDefault();
-    };
+    // const onClickSortByPrice = (event) => {
+    //     event.preventDefault();
+    // };
 
     let body = null;
 

@@ -18,14 +18,12 @@ import { Link, useParams } from 'react-router-dom';
 
 const Products = () => {
     const { productName } = useParams();
-    console.log('search', productName);
     const {
         productState: { products, productLoading },
         getProductsByName,
     } = useContext(ProductContext);
 
     useEffect(() => getProductsByName(productName), []);
-    console.log('products', products);
     let body = null;
 
     if (productLoading) {

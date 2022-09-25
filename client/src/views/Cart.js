@@ -4,14 +4,17 @@ import { Breadcrumb, BreadcrumbItem, Button, ProgressBar, Spinner, Table } from 
 import { CartContext } from '../contexts/CartContext';
 import { faFaceFrown } from '@fortawesome/free-solid-svg-icons';
 import TableItem from '../components/cart/TableItem';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 const Cart = () => {
     const {
         getCarts,
         cartState: { cart, cartLoading },
     } = useContext(CartContext);
-    console.log('cart',cart)
+
+    const history = useHistory();
+
+
     useEffect(() => getCarts(), []);
     const convertNumberToMoney = (number) => {
         const cent = new Intl.NumberFormat('vi-VN', {
@@ -19,6 +22,13 @@ const Cart = () => {
             currency: 'VND',
         }).format(number);
         return cent;
+    };
+    const moveToHome = (event) => {
+        event.preventDefault();
+        history.push({
+            pathname: `/home`,
+        });
+        
     };
     // Start: Get all products
     let body = null;
@@ -30,7 +40,7 @@ const Cart = () => {
                 </div>
             </div>
         );
-    } else if (cart.length === 0) {
+    } else if (cart.cart.length === 0) {
         body = (
             <>
                 <div className="no-cart-layout text-center ">
@@ -39,8 +49,8 @@ const Cart = () => {
                         className="no-cart-icon"
                     ></FontAwesomeIcon>
                     <p className="no-cart-text mb-5">Chưa có sản phẩm</p>
-                    <Button variant="success" className="no-cart-button">
-                        Xem giỏ hàng
+                    <Button variant="success" className="no-cart-button" onClick={moveToHome}>
+                        Mua hàng
                     </Button>
                 </div>
             </>
