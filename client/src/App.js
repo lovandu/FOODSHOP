@@ -14,6 +14,7 @@ import Payment from './views/Payment';
 import OrderContextProvider from './contexts/OrderContext';
 import Purchase from './views/Purchase';
 import Products from './views/Products';
+import NotFound from './views/NotFound';
 
 function App() {
     return (
@@ -31,6 +32,7 @@ function App() {
                                         <Auth {...props} authRoute="login" />
                                     )}
                                 />
+                                {/* No other routes match */}
                                 <Route
                                     exact
                                     path="/register"
@@ -38,6 +40,7 @@ function App() {
                                         <Auth {...props} authRoute="register" />
                                     )}
                                 />
+
                                 <ProtectedRoute
                                     exact
                                     path="/productmanage"
@@ -74,6 +77,8 @@ function App() {
                                     path="/:productId"
                                     component={ProductDetail}
                                 />
+                                <Route component={NotFound}/>
+
                             </Switch>
                         </Router>
                     </CartContextProvider>
