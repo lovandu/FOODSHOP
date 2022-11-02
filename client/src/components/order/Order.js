@@ -4,14 +4,7 @@ import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 const Order = ({ order }) => {
-    // const {
-    //     productState: { products },
-    //     getAllProducts,
-    // } = useContext(ProductContext);
-    // // console.log('order', order)
-    // // Start: Get all products
-    // useEffect(() => getAllProducts(), []);
-    // const productsList = [];
+
     const convertNumberToMoney = (number) => {
         const cent = new Intl.NumberFormat('vi-VN', {
             style: 'currency',

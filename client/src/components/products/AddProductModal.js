@@ -1,6 +1,10 @@
 import { Modal, Button, Form } from 'react-bootstrap';
-import { useContext, useState } from 'react';
-import { ProductContext } from '../../contexts/ProductContext';
+import {  useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+    addProduct,
+    setShowAddProductModal,
+} from '../../store/actions/productAction';
 
 const CATEGORIES = {
     FOOD: 'food',
@@ -9,9 +13,10 @@ const CATEGORIES = {
 };
 
 const AddProductModal = () => {
-    // Contexts
-    const { showAddProductModal, setShowAddProductModal, addProduct } = useContext(ProductContext);
-
+    const dispatch = useDispatch();
+    const showAddProductModal = useSelector(
+        (state) => state.productModal.addModal,
+    );
     // State
     const [newProduct, setNewProduct] = useState({
         name: '',
@@ -33,7 +38,7 @@ const AddProductModal = () => {
 
     const onSubmit = async (event) => {
         event.preventDefault();
-        await addProduct(newProduct);
+        await dispatch(addProduct(newProduct));
         resetAddProductData();
     };
     const resetAddProductData = () => {
@@ -44,7 +49,7 @@ const AddProductModal = () => {
             price: '',
             description: '',
         });
-        setShowAddProductModal(false);
+        dispatch(setShowAddProductModal(false));
     };
 
     return (

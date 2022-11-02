@@ -12,15 +12,12 @@ import {
 // import Button from 'react-bootstrap/Button'
 import { Link, useHistory } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthContext';
-import { Fragment, useContext, useEffect, useState } from 'react';
+import { Fragment, useContext, useState } from 'react';
 import userIcon from '../../assets/person-circle.svg';
-// import userImage from '../../assets/userImage.jpg';
-
 import noCart from '../../assets/no-cart.png';
-import { CartContext } from '../../contexts/CartContext';
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faCartShopping } from '@fortawesome/free-solid-svg-icons';
+import { useSelector } from 'react-redux';
 
 function NavbarMain() {
     const history = useHistory();
@@ -32,13 +29,8 @@ function NavbarMain() {
         logoutUser,
     } = useContext(AuthContext);
 
-    const {
-        getCarts,
 
-        cartState: { cart },
-    } = useContext(CartContext);
-
-    useEffect(() => getCarts(), []);
+    const cart=useSelector((state)=>state.cart.cart)
 
     // console.log('cart', cart);
     const [search, setSearch] = useState('');

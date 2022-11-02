@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import {
     Button,
     Col,
@@ -9,20 +9,13 @@ import {
     Spinner,
 } from 'react-bootstrap';
 import ProductList from '../components/home/ProductList';
-// import { AuthContext } from '../contexts/AuthContext';
-import { ProductContext } from '../contexts/ProductContext';
 import listIcon from '../assets/list.svg';
+import { useSelector } from 'react-redux';
 
 const Home = () => {
-    // Contexts
-
-    const {
-        productState: { products, productLoading },
-        getAllProducts,
-    } = useContext(ProductContext);
-
-    useEffect(() => getAllProducts(), []);
-
+    
+    const products = useSelector((state) => state.product.products);
+    const productLoading = useSelector((state) => state.product.productLoading);
     const [productsState, setProductsState] = useState(products);
 
     const onClickFilterAll = (event) => {
@@ -121,10 +114,7 @@ const Home = () => {
                             </ListGroup>
                         </Col>
                         <Col xs={10}>
-                            <Container
-                                fluid
-                                className="sort-product-home  "
-                            >
+                            <Container fluid className="sort-product-home  ">
                                 <Row>
                                     <Col xs={2}>
                                         <p className="mt-3 font-weight-bolder">

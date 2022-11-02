@@ -1,15 +1,15 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Col, Row, Tab, Tabs } from 'react-bootstrap';
+import { useDispatch, useSelector } from 'react-redux';
 import UserSideBar from '../components/auth/UserSideBar';
 import Order from '../components/order/Order';
-import { OrderContext } from '../contexts/OrderContext';
+import { getOrders } from '../store/actions/orderAction';
 const Purchase = () => {
-    const {
-        orderState: { orders },
-        getOrders,
-    } = useContext(OrderContext);
-    useEffect(() => getOrders(), []);
-    // console.log('orders', orders);
+
+    const orders = useSelector((state) => state.order.orders);
+    const dispatch =useDispatch();
+    useEffect(() =>dispatch( getOrders()), []);
+
 
     return (
         <>

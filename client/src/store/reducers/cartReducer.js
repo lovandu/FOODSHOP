@@ -5,9 +5,14 @@ import {
     UPDATE_CART,
     DELETE_CART,
     RESET_CART,
-} from '../contexts/constants';
+} from '../actions/constants';
 
-export const cartReducer = (state, action) => {
+const initialState = {
+    cart: [],
+    cartLoading: true,
+};
+
+export const cartReducer = (state = initialState, action) => {
     const { type, payload } = action;
     switch (type) {
         case CART_LOADED_FAIL:
@@ -23,11 +28,6 @@ export const cartReducer = (state, action) => {
                 ...state,
                 cart: payload,
             };
-        // case ADD_PRODUCT:
-        //     return {
-        //         ...state,
-        //         products: [...state.products, payload],
-        //     };
         case RESET_CART:
             return {
                 ...state,

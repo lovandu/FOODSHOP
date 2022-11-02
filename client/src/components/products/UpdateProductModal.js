@@ -1,21 +1,18 @@
 import { Modal, Button, Form } from 'react-bootstrap';
-import { useContext, useEffect, useState } from 'react';
-import { ProductContext } from '../../contexts/ProductContext';
+import {  useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { setShowUpDateProductModal, updateProduct } from '../../store/actions/productAction';
 const CATEGORIES = {
     FOOD: 'food',
     BEVERAGE: 'beverage',
     DRY: 'dry',
 };
 const UpdateProductModal = () => {
-    // Contexts
-    const {
-        productState: { product },
-        showUpdateProductModal,
-        setShowUpdateProductModal,
-        updateProduct,
-    } = useContext(ProductContext);
-
-    // State
+    const dispatch = useDispatch();
+    const product = useSelector((state) => state.product.product);
+    const showUpdateProductModal = useSelector(
+        (state) => state.productModal.updateModal,
+    );
     const [updatedProduct, setUpdatedProduct] = useState(product);
 
     useEffect(() => setUpdatedProduct(product), [product]);
@@ -30,13 +27,13 @@ const UpdateProductModal = () => {
 
     const closeDialog = () => {
         setUpdatedProduct(product);
-        setShowUpdateProductModal(false);
+        dispatch(setShowUpDateProductModal(false));
     };
 
     const onSubmit = async (event) => {
         event.preventDefault();
-        await updateProduct(updatedProduct);
-        setShowUpdateProductModal(false);
+        await dispatch( updateProduct(updatedProduct));
+        dispatch(setShowUpDateProductModal(false));
     };
     // const convertCategory = (category) => {
     //     if (category === 'food') {

@@ -1,21 +1,21 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React, { useContext, useEffect } from 'react';
-import { Breadcrumb, BreadcrumbItem, Button, ProgressBar, Spinner, Table } from 'react-bootstrap';
-import { CartContext } from '../contexts/CartContext';
+import {
+    Breadcrumb,
+    BreadcrumbItem,
+    Button,
+    ProgressBar,
+    Spinner,
+    Table,
+} from 'react-bootstrap';
 import { faFaceFrown } from '@fortawesome/free-solid-svg-icons';
 import TableItem from '../components/cart/TableItem';
 import { Link, useHistory } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const Cart = () => {
-    const {
-        getCarts,
-        cartState: { cart, cartLoading },
-    } = useContext(CartContext);
-
+    const cart = useSelector((state) => state.cart.cart);
+    const cartLoading = useSelector((state) => state.cart.cartLoading);
     const history = useHistory();
-
-
-    useEffect(() => getCarts(), []);
     const convertNumberToMoney = (number) => {
         const cent = new Intl.NumberFormat('vi-VN', {
             style: 'currency',
@@ -28,7 +28,6 @@ const Cart = () => {
         history.push({
             pathname: `/home`,
         });
-        
     };
     // Start: Get all products
     let body = null;
@@ -49,7 +48,11 @@ const Cart = () => {
                         className="no-cart-icon"
                     ></FontAwesomeIcon>
                     <p className="no-cart-text mb-5">Chưa có sản phẩm</p>
-                    <Button variant="success" className="no-cart-button" onClick={moveToHome}>
+                    <Button
+                        variant="success"
+                        className="no-cart-button"
+                        onClick={moveToHome}
+                    >
                         Mua hàng
                     </Button>
                 </div>
@@ -112,9 +115,7 @@ const Cart = () => {
                     <BreadcrumbItem>
                         <Link to="/home">Trang chủ</Link>
                     </BreadcrumbItem>
-                    <BreadcrumbItem active>
-                        Giỏ hàng
-                    </BreadcrumbItem>
+                    <BreadcrumbItem active>Giỏ hàng</BreadcrumbItem>
                 </Breadcrumb>
                 {body}
             </div>

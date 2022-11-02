@@ -1,18 +1,18 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import { Button, Form, InputGroup } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMinus, faPlus } from '@fortawesome/free-solid-svg-icons';
-import { CartContext } from '../../contexts/CartContext';
+import { useDispatch } from 'react-redux';
+import { addToCart, deleteCart } from '../../store/actions/cartAction';
 
 const TableItem = ({
     product: { productId, name, price, image, quantity },
 }) => {
-    //  context
-    const { addToCart } = useContext(CartContext);
+    const dispatch = useDispatch();
 
     const [quantityState, setQuantity] = useState(quantity);
-    console.log('id', productId);
+
     const convertNumberToMoney = (number) => {
         const cent = new Intl.NumberFormat('vi-VN', {
             style: 'currency',
@@ -24,7 +24,10 @@ const TableItem = ({
     return (
         <tr>
             <th>
-                <Link to={`/product/${productId}`} style={{ textDecoration: 'none' }}>
+                <Link
+                    to={`/product/${productId}`}
+                    style={{ textDecoration: 'none' }}
+                >
                     <div className="cart-product-info">
                         <img
                             src={image}
@@ -50,11 +53,15 @@ const TableItem = ({
                                 e.preventDefault();
                                 if (quantityState > 1) {
                                     let quantity = -1;
-                                    await addToCart({productId, quantity});
+                                    await dispatch(
+                                        addToCart({ productId, quantity }),
+                                    );
                                     setQuantity(quantityState - 1);
                                 } else if (quantityState === 1) {
                                     let quantity = 0;
-                                    await addToCart({productId, quantity});
+                                    await dispatch(
+                                        addToCart({ productId, quantity }),
+                                    );
                                 }
                             }}
                         >
@@ -71,7 +78,7 @@ const TableItem = ({
                             onClick={async (e) => {
                                 e.preventDefault();
                                 let quantity = 1;
-                                await addToCart({productId, quantity});
+                                await dispatch( addToCart({ productId, quantity }));
                                 setQuantity(quantityState + 1);
                             }}
                         >

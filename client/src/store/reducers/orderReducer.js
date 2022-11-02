@@ -2,9 +2,14 @@ import {
     ORDER_LOADED_SUCCESS,
     ORDER_LOADED_FAIL,
     ADD_ORDER,
-} from '../contexts/constants';
+} from '../actions/constants';
 
-export const orderReducer = (state, action) => {
+const initialState = {
+    order: null,
+    orders: [],
+    orderLoading: true,
+};
+export const orderReducer = (state=initialState, action) => {
     const { type, payload } = action;
     switch (type) {
         case ORDER_LOADED_SUCCESS:

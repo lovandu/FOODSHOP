@@ -11,19 +11,19 @@ import {
     Spinner,
 } from 'react-bootstrap';
 import ProductList from '../components/home/ProductList';
-// import { AuthContext } from '../contexts/AuthContext';
-import { ProductContext } from '../contexts/ProductContext';
 import listIcon from '../assets/list.svg';
 import { Link, useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { getProductsByName } from '../store/actions/productAction';
 
 const Products = () => {
     const { productName } = useParams();
-    const {
-        productState: { products, productLoading },
-        getProductsByName,
-    } = useContext(ProductContext);
 
-    useEffect(() => getProductsByName(productName), []);
+    
+    const dispatch = useDispatch();
+    useEffect(() => dispatch(getProductsByName(productName)), [productName]);
+    const products = useSelector((state) => state.product.products);
+    const productLoading = useSelector((state) => state.product.productLoading);
     let body = null;
 
     if (productLoading) {

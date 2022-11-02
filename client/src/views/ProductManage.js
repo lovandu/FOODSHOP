@@ -1,6 +1,4 @@
-import React from 'react';
-import { ProductContext } from '../contexts/ProductContext';
-import { useContext, useEffect } from 'react';
+
 import {
     Spinner,
     Card,
@@ -14,27 +12,15 @@ import ActionButtons from '../components/products/ActionButtons';
 import AddProductModal from '../components/products/AddProductModal';
 import addIcon from '../assets/plus-circle-fill.svg';
 import UpdateProductModal from '../components/products/UpdateProductModal';
-
-// import AuthContext from '../contexts/AuthContext';
+import { useDispatch, useSelector } from 'react-redux';
+import { setShowAddProductModal } from '../store/actions/productAction';
 
 const ProductManage = () => {
-    // // Contexts
-    // const {
-    //     authState: {
-    //         user: { username },
-    //     },
-    // } = useContext(AuthContext);
+    const product = useSelector((state) => state.product.product);
+    const products = useSelector((state) => state.product.products);
+    const productLoading = useSelector((state) => state.product.productLoading);
+    const dispatch = useDispatch();
 
-    const {
-        productState: { product, products, productLoading },
-        getProducts,
-        setShowAddProductModal,
-    } = useContext(ProductContext);
-
-    // Start: Get all products
-    useEffect(() => getProducts(), []);
-
-    // convert category
     const convertCategory = (category) => {
         if (category === 'food') {
             return 'Đồ ăn';
@@ -66,9 +52,8 @@ const ProductManage = () => {
                             </Card.Title>
                             <Button
                                 variant="primary"
-                                onClick={setShowAddProductModal.bind(
-                                    this,
-                                    true,
+                                onClick={dispatch(
+                                    setShowAddProductModal.bind(this, true),
                                 )}
                             >
                                 Thêm mặt hàng!
@@ -121,7 +106,9 @@ const ProductManage = () => {
                 >
                     <Button
                         className="btn-floating"
-                        onClick={setShowAddProductModal.bind(this, true)}
+                        onClick={dispatch(
+                            setShowAddProductModal.bind(this, true),
+                        )}
                     >
                         <img
                             src={addIcon}

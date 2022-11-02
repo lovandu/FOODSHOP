@@ -1,21 +1,17 @@
 import Button from 'react-bootstrap/Button';
 import editIcon from '../../assets/pencil.svg';
 import deleteIcon from '../../assets/trash.svg';
-import { useContext } from 'react';
-import { ProductContext } from '../../contexts/ProductContext';
+
+import { useDispatch } from 'react-redux';
+import { deleteProduct, findProduct, setShowUpDateProductModal } from '../../store/actions/productAction';
 
 const ActionButtons = ({ _id }) => {
-    const { deleteProduct, findProduct,
-        setShowUpdateProductModal } = useContext(ProductContext);
-
-    // const choosePost = postId => {
-    // 	findPost(postId)
-    // 	setShowUpdatePostModal(true)
-    // }
+    const dispatch = useDispatch();
     const chooseProduct = (productId) => {
-        findProduct(productId);
-        setShowUpdateProductModal(true)
+        dispatch(findProduct(productId));
+        dispatch(setShowUpDateProductModal(true));
     };
+    
 
     return (
         <>
@@ -27,7 +23,9 @@ const ActionButtons = ({ _id }) => {
             </Button>
             <Button
                 className="post-button"
-                onClick={deleteProduct.bind(this, _id)}
+                onClick={dispatch( deleteProduct.bind(this, _id))
+                    
+                }
             >
                 <img src={deleteIcon} alt="delete" width="24" height="24" />
             </Button>

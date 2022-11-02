@@ -1,4 +1,3 @@
-import React, { useContext, useEffect, useState } from 'react';
 import {
     Breadcrumb,
     BreadcrumbItem,
@@ -9,45 +8,23 @@ import {
     Spinner,
     Table,
 } from 'react-bootstrap';
-import { OrderContext } from '../contexts/OrderContext';
 import { Link, useHistory } from 'react-router-dom';
-import { CartContext } from '../contexts/CartContext';
+import { useDispatch, useSelector } from 'react-redux';
+import { useState } from 'react';
+import { addOrders } from '../store/actions/orderAction';
+import { resetCart } from '../store/actions/cartAction';
 
 const Payment = ({ product, quantity }) => {
-    // context
-    // const {
-    //     productState: { products },
-    //     getAllProducts,
-    // } = useContext(ProductContext);
     const history = useHistory();
-
-    const { addOrders } = useContext(OrderContext);
-
-    // useEffect(() => getAllProducts(), []);
-
-    // const productsList = products;
-
-    // console.log('quantity', quantity);
-    const {
-        getCarts,
-        resetCart,
-        cartState: { cart, cartLoading },
-    } = useContext(CartContext);
-    // if()
-    console.log('cart', cart);
-
+    const dispatch = useDispatch();
+    const cart = useSelector((state) => state.cart.cart);
+    const cartLoading = useSelector((state) => state.cart.cartLoading);
     const productsList = [];
-
     if (cart.length !== 0) {
         for (const cartItem of cart.cart) {
-            // console.log('cartItem',cartItem)
             productsList.push(cartItem);
         }
     }
-    console.log('productsList', productsList);
-
-    useEffect(() => getCarts(), []);
-    
     const convertNumberToMoney = (number) => {
         const cent = new Intl.NumberFormat('vi-VN', {
             style: 'currency',
@@ -64,12 +41,7 @@ const Payment = ({ product, quantity }) => {
         paymentMethod: 'Thanh toán tiền mặt',
         status: true,
     });
-    const {
-        userName,
-        userAddress,
-        userPhone,
-        paymentMethod,
-    } = newOrder;
+    const { userName, userAddress, userPhone, paymentMethod } = newOrder;
 
     const onChangeNewOrderForm = (event) =>
         setNewOrder({
@@ -79,9 +51,9 @@ const Payment = ({ product, quantity }) => {
 
     const onSubmit = async (event) => {
         event.preventDefault();
-        await addOrders(newOrder);
+        await dispatch(addOrders(newOrder));
         console.log('bf resetCart');
-        await resetCart();
+        await dispatch(resetCart());
         console.log('af resetCart');
 
         setTimeout(() => {

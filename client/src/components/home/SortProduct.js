@@ -1,5 +1,5 @@
 import React from 'react';
-import { Badge, Button, Col, Container, Dropdown, Row } from 'react-bootstrap';
+import { Button, Col, Container, Dropdown, Row } from 'react-bootstrap';
 
 const SortProduct = () => {
     return (

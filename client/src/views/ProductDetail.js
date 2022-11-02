@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
     Breadcrumb,
     BreadcrumbItem,
@@ -11,28 +11,24 @@ import {
     InputGroup,
 } from 'react-bootstrap';
 import { Link, useParams } from 'react-router-dom';
-import { CartContext } from '../contexts/CartContext';
-import { ProductContext } from '../contexts/ProductContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     faFaceFrown,
     faMinus,
     faPlus,
 } from '@fortawesome/free-solid-svg-icons';
+import { useDispatch, useSelector } from 'react-redux';
+import { getAProduct } from '../store/actions/productAction';
+import { addToCart } from '../store/actions/cartAction';
 
 const ProductDetail = () => {
-    const {
-        productState: { product },
-        getAProduct,
-    } = useContext(ProductContext);
-
-    const { addToCart } = useContext(CartContext);
-
+    const dispatch = useDispatch();
     const { productId } = useParams();
     const [quantity, setQuantity] = useState(1);
-    // Start: Get a product
-    // console.log('id',productId )
-    useEffect(() => getAProduct(productId), []);
+    const product = useSelector((state) => state.product.product);
+
+    useEffect(() => {dispatch((getAProduct(productId)))}, []);
+    console.log(product);
     const convertNumberToMoney = (number) => {
         const cent = new Intl.NumberFormat('vi-VN', {
             style: 'currency',
@@ -43,7 +39,7 @@ const ProductDetail = () => {
 
     const addToCartHandle = async (event) => {
         event.preventDefault();
-        await addToCart({ productId, quantity });
+        await dispatch(addToCart({ productId, quantity }));
     };
     let body = null;
     if (product) {

@@ -1,9 +1,9 @@
-import React, { useContext } from 'react';
 import { Button, Card} from 'react-bootstrap';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { CartContext } from '../../contexts/CartContext';
+import { addToCart } from '../../store/actions/cartAction';
 const ProductList = ({ product: { _id, name, price, image } }) => {
-    const { addToCart } = useContext(CartContext);
+const dispatch = useDispatch();
 
     const cent = new Intl.NumberFormat('vi-VN', {
         style: 'currency',
@@ -19,7 +19,7 @@ const ProductList = ({ product: { _id, name, price, image } }) => {
     // console.log('productId', productId);
     const addToCartHandle = async (event) => {
         event.preventDefault();
-        await addToCart({ productId, quantity });
+        await dispatch( addToCart({ productId, quantity }));
     };
     // console.log(cent)
     return (

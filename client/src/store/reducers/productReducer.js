@@ -6,15 +6,29 @@ import {
     UPDATE_PRODUCT,
     FIND_PRODUCT,
     FILTER_PRODUCT,
-} from '../contexts/constants';
+    GET_PRODUCT,
+} from '../actions/constants';
 
-export const productReducer = (state, action) => {
+const initialState = {
+    product: null,
+    products: [],
+    productLoading: true,
+};
+
+export const productReducer = (state=initialState, action) => {
     const { type, payload } = action;
     switch (type) {
         case FIND_PRODUCT:
             return {
                 ...state,
-                product: payload,
+                product: state.products.find(
+                    (product) => product._id === payload,
+                ),
+            };
+        case GET_PRODUCT:
+            return {
+                ...state,
+                product:payload
             };
         case PRODUCT_LOADED_SUCCESS:
             return {
